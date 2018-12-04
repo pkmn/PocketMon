@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>Test</title>
+<style>
+  @font-face { font-family: 'Pokemon'; src: url('./Pokemon.ttf'); }
+  body {
+    font-family: 'Pokemon';
+      font-size: 10px;
+    }
+  #display {
+    width: 411px;
+    height: 737px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto;
+  }
+  #content {
+    width: 372px;
+    height: 666px;
+    border: 1px solid black;
+  }
+  .tile {
+    position: relative;
+    float: left;
+
+    border: 1px solid black;
+    margin: 1px;
+  }
+  .move {
+    position: relative;
+    float: left;
+
+    border: 1px solid black;
+    margin: 1px;
+  }
+  #log {
+    text-overflow: clip;
+    overflow: hidden;
+    line-height: 1.4em;
+  }
+</style>
+<body>
+  <div id="display">
+    <div id="content">
+    </div>
+  </div>
+<script>
+function move(name, type, pp, x, y, w, h) {
+  var div = document.createElement("div");
+  div.classList.add('move');
+  div.style.left = x + 'px';
+  div.style.top = y + 'px';
+  div.style.width = w + 'px';
+  div.style.height = h + 'px';
+  div.style.display = 'flex';
+  div.style.alignItems = 'center';
+  div.style.justifyContent = 'center';
+
+  var span = document.createElement("span");
+  span.style.width = w + 'px';
+  span.style.display = "block";
+  span.style.fontSize = '12px';
+  span.style.textAlign = "center";
+  span.textContent = name.toUpperCase();
+  div.appendChild(span);
+
+div.appendChild(document.createElement("br"));
+
+ var span = document.createElement("span");
+  span.style.width = w + 'px';
+  span.style.display = "block";
+  span.style.fontSize = '8px';
+  span.style.textAlign = "center";
+  span.textContent = ('Type/' + type).toUpperCase();
+  div.appendChild(span);
+
+  
+
+  var content = document.getElementById("content");
+  content.appendChild(div);
+}
+
+function tile(name, text, x, y, w, h, back) {
+  var div = document.createElement("div");
+  div.classList.add('tile');
+  div.style.left = x + 'px';
+  div.style.top = y + 'px';
+  div.style.width = w + 'px';
+  div.style.height = h + 'px';
+
+  var t = back ? 'back-normal' : 'normal';
+  var img = document.createElement("img"); 
+  img.src = 'https://img.pokemondb.net/sprites/red-blue/' + t + '/' + name + '.png';
+  div.appendChild(img);
+
+  var span = document.createElement("span");
+  span.style.width = "100%";
+  span.style.display = "block";
+  span.style.fontSize = '8px';
+  span.style.textAlign = "center";
+  span.textContent = text;
+  div.appendChild(span);
+
+
+  var content = document.getElementById("content");
+  content.appendChild(div);
+}
+
+function buttons() {
+  move("Thunderbolt", "Electric", "14/16", 0, 0, 372/2 - 4, 160/2 - 4);
+  move("Drill Peck", "Flying", "16/16", 0, 0, 372/2 - 4, 160/2 - 4);
+  move("Thunder Wave", "Electric", "32/32", 0, 0, 372/2 - 4, 160/2 - 4);
+  move("Agility", "Psychic", "23/24", 0, 0, 372/2 - 4, 160/2 - 4);
+}
+
+function onCanvas(ctx, name, x,y, back, scale) {
+  scale = scale || 1;
+  var t = back ? 'back-normal' : 'normal';
+
+  var img = new Image();
+  img.onload = function() {
+    ctx.drawImage(img, x, y, scale * 56, scale * 56);
+  };
+  img.src = 'https://img.pokemondb.net/sprites/red-blue/' + t + '/' + name + '.png';
+}
+
+function log() {
+  var div = document.createElement("div");
+  div.style.width = "352px";
+  div.style.height = "158px";
+  div.style.padding = "10px";
+  div.id = 'log';
+
+var text = `ZAPDOS used THUNDERBOLT!<br />
+It's super effective!<br />
+The opposing ALAKAZAM was hurt! <br />
+ZAPDOS's Defense fell!<br />
+ZAPDOS's Special Defense fell!<br /><br />
+The opposing ALAKAZAM used PSYCHIC!<br />
+ZAPDOS was hurt!<br />
+ZAPDOS's Defense fell!<br />
+The opposing ALAKAZAM lost some of its HP!<br /><br />
+The opposing ALAKAZAM fainted!<br /><br />
+The sandstorm is raging.<br />
+ZAPDOS is buffeted by the sandstorm!<br /><br />
+POKEI sent out CHANSEY!`
+
+  div.innerHTML = text;
+
+  var content = document.getElementById("content");
+  content.appendChild(div);
+}
+
+tile("alakazam", "45/100", 0, 0, 58, 78);
+tile("chansey", "0/100 FNT", 0, 0, 58, 78);
+tile("starmie", "100/100 PAR", 0, 0, 58, 78);
+tile("exeggutor", "30/100 FRZ", 0, 0, 58, 78);
+tile("tauros", "7/100", 0, 0, 58, 78);
+tile("snorlax", "87/100", 0, 0, 58, 78);
+
+
+var canvas = document.createElement("canvas");
+var ctx = canvas.getContext("2d");
+canvas.width = 372;
+canvas.height = 160;
+var content = document.getElementById("content");
+content.appendChild(canvas);
+
+onCanvas(ctx, 'alakazam', 372-112-4, 4, false, 2);
+onCanvas(ctx, 'zapdos', 0 + 4, 160-112+4, true, 2);
+
+
+log();
+
+buttons();
+
+tile("alakazam", "45/100", 0, 0, 58, 78, true);
+tile("chansey", "0/100 FNT", 0, 0, 58, 78, true);
+tile("starmie", "100/100 PAR", 0, 0, 58, 78, true);
+tile("exeggutor", "30/100 FRZ", 0, 0, 58, 78, true);
+tile("tauros", "7/100", 0, 0, 58, 78, true);
+tile("snorlax", "87/100", 0, 0, 58, 78, true);
+
+</script>
+</body>
+</html>
