@@ -20,26 +20,31 @@
   #content {
     width: 372px;
     height: 666px;
-    border: 1px solid black;
+    /*border: 1px solid red;*/
   }
   .tile {
     position: relative;
     float: left;
-
-    border: 1px solid black;
-    margin: 1px;
+    margin: 2px;
   }
   .move {
     position: relative;
     float: left;
 
-    border: 1px solid black;
+    border: 5px solid black;
+    border-radius: 10px;
     margin: 1px;
   }
   #log {
-    text-overflow: clip;
-    overflow: hidden;
+    overflow: scroll;
+    margin: 10px;
     line-height: 1.4em;
+
+    width: 352px;
+    height: 138px;
+  }
+  #log::-webkit-scrollbar {
+    display: none;
   }
 </style>
 <body>
@@ -56,6 +61,7 @@ function move(name, type, pp, x, y, w, h) {
   div.style.width = w + 'px';
   div.style.height = h + 'px';
   div.style.display = 'flex';
+  div.style.flexDirection = 'column';
   div.style.alignItems = 'center';
   div.style.justifyContent = 'center';
 
@@ -67,17 +73,22 @@ function move(name, type, pp, x, y, w, h) {
   span.textContent = name.toUpperCase();
   div.appendChild(span);
 
-div.appendChild(document.createElement("br"));
-
- var span = document.createElement("span");
+ /* span = document.createElement("span");
   span.style.width = w + 'px';
   span.style.display = "block";
-  span.style.fontSize = '8px';
+  span.style.fontSize = '6px';
   span.style.textAlign = "center";
   span.textContent = ('Type/' + type).toUpperCase();
-  div.appendChild(span);
+  div.appendChild(span);*/
 
-  
+  span = document.createElement("span");
+  span.style.width = w + 'px';
+  span.style.display = "block";
+  span.style.fontSize = '10px';
+  span.style.paddingTop = '6px';
+  span.style.textAlign = "center";
+  span.textContent = pp;
+  div.appendChild(span);
 
   var content = document.getElementById("content");
   content.appendChild(div);
@@ -92,7 +103,7 @@ function tile(name, text, x, y, w, h, back) {
   div.style.height = h + 'px';
 
   var t = back ? 'back-normal' : 'normal';
-  var img = document.createElement("img"); 
+  var img = document.createElement("img");
   img.src = 'https://img.pokemondb.net/sprites/red-blue/' + t + '/' + name + '.png';
   div.appendChild(img);
 
@@ -110,10 +121,11 @@ function tile(name, text, x, y, w, h, back) {
 }
 
 function buttons() {
-  move("Thunderbolt", "Electric", "14/16", 0, 0, 372/2 - 4, 160/2 - 4);
-  move("Drill Peck", "Flying", "16/16", 0, 0, 372/2 - 4, 160/2 - 4);
-  move("Thunder Wave", "Electric", "32/32", 0, 0, 372/2 - 4, 160/2 - 4);
-  move("Agility", "Psychic", "23/24", 0, 0, 372/2 - 4, 160/2 - 4);
+  var p = 12;
+  move("Thunderbolt", "Electric", "14/16", 0, 0, 372/2 - p, 160/2 - p);
+  move("Drill Peck", "Flying", "16/16", 0, 0, 372/2 - p, 160/2 - p);
+  move("Thunder Wave", "Electric", "32/32", 0, 0, 372/2 - p, 160/2 - p);
+  move("Agility", "Psychic", "23/24", 0, 0, 372/2 - p, 160/2 - p);
 }
 
 function onCanvas(ctx, name, x,y, back, scale) {
@@ -129,9 +141,6 @@ function onCanvas(ctx, name, x,y, back, scale) {
 
 function log() {
   var div = document.createElement("div");
-  div.style.width = "352px";
-  div.style.height = "158px";
-  div.style.padding = "10px";
   div.id = 'log';
 
 var text = `ZAPDOS used THUNDERBOLT!<br />
@@ -164,14 +173,15 @@ tile("snorlax", "87/100", 0, 0, 58, 78);
 
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
-canvas.width = 372;
+canvas.width = 362;
 canvas.height = 160;
+canvas.style.border = '5px solid black';
+canvas.style.borderRadius = '10px';
 var content = document.getElementById("content");
 content.appendChild(canvas);
 
-onCanvas(ctx, 'alakazam', 372-112-4, 4, false, 2);
-onCanvas(ctx, 'zapdos', 0 + 4, 160-112+4, true, 2);
-
+onCanvas(ctx, 'alakazam', 372-112-8, 8, false, 2);
+onCanvas(ctx, 'zapdos', 0, 160-112, true, 2);
 
 log();
 
