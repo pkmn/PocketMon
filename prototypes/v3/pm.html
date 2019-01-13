@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Test</title>
+<style>
+
+body {
+  font-family: Verdana;
+    font-size: 13.3px;
+  }
+
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	/*border: none; */
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+  #display {
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .team {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .move .content {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .move .pp {
+    float: right;
+      font-size: 7pt;
+  }
+  .move .type {
+    float: left;
+    font-size: 7pt;
+  }
+
+  @media(min-width: 411px) {
+    #display {
+      width: 411px; /* 410 */
+      height: 731px; /* 730 */
+    }
+
+    .team {
+      height: 60px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .top {
+      height: 30px;
+      border-bottom: 1px solid black;
+    }
+    .top div {
+      width:calc(100% / 3);
+        float: left;
+      }
+
+    #p1, #p2 {
+      height: 18px;
+        font-size: 7pt;
+    }
+    #screen {
+      height: 192px;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+
+    }
+
+    .member {
+      width: 60px;
+      height: 60px;
+    }
+
+    .move {
+      height: 75px;
+        margin-top: 5px;
+      width: 190px;
+    }
+    #battle {
+      height: 230px;
+      margin-top: 12px;
+        margin-left: 10px;
+        margin-right: 10px;
+      border: 5px solid black;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    #log {
+       height: 100px;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      overflow: scroll;
+      padding: 10px;
+      }
+    #log {
+      border-left: 5px solid black;
+      border-right: 5px solid black;
+      border-bottom: 5px solid black;
+    }
+    #moves {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      }
+    button {
+      border-radius: 5px;
+      border: 1px solid black;
+    }
+  }
+
+  .info {
+    background-color: rgb(255, 0, 0, 0.5);
+    z-index: 1;
+    position: absolute;
+    height: 182px;
+      width: 100%;
+    }
+
+
+
+  /** TODO */
+  #display { border: 1px solid black; }
+  .hide { display: none; }
+
+  /* .content { display: none; } */
+  .col.timer {
+    text-align: center;
+  }
+  button.timer {
+    margin-top: 3px;
+    padding: 3px;
+    }
+
+  .turn {
+    margin-left: 6px;
+      margin-top: 6px;
+      }
+
+  .top .col {
+    vertical-align: middle;
+    height: 100%;
+  }
+
+  .debug {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    display: none;
+  }
+
+  .d0 { background-color: rgb(255, 0, 0, 0.2); height: 31px; top: 0px; }
+  .d1 { background-color: rgb(0, 255, 0, 0.2); height: 350px; top: 31px; }
+  .d2 { background-color: rgb(0, 0, 255, 0.2); height: 350px; top: 381px;}
+
+  .icon {
+    image-rendering: pixelated;
+    height: 30px;
+    width: 40px;
+    display: inline-block;
+
+  }
+
+  #battle img {
+    position: relative;
+    width: 192px;
+    height: 192px;
+  }
+
+  #battle img.p2 {
+    top: -30px;
+    right: -212px;
+  }
+
+  #battle img.p1 {
+    bottom: 168px;
+    right: 20px;
+  }
+
+  .hpbar {
+    height: 5px;
+    position: relative;
+      background-color: green;
+    width: 151px;
+  }
+
+  .hpbar.p1 {
+    bottom: 242px;
+    left: 212px;
+  }
+
+  .status  {
+    color: #fff;
+    border-radius: 3px;
+    padding: 0 2px;
+      min-height: 10px;
+    font-size: 7pt;
+  }
+
+  .status .good {
+        background: #E5FFE0;
+    color: #33AA00;
+    border-color: #33AA00;
+  }
+
+  .status span {
+    padding: 0px 1px;
+    border: 1px solid #FF4400;
+    border-radius: 3px;
+  }
+
+  .hpbar.p2 {
+    top: -172px;
+    right: -20px;
+  }
+</style>
+<body>
+  <div id="display">
+    <div class="debug d0"></div>
+    <div class="debug d1"></div>
+    <div class="debug d2"></div>
+    <div class="top">
+      <div class="col"><div class="turn">Turn 1</div></div>
+      <div class="col timer"><button class="timer">1:30 | 4:50</button></div>
+      <div class="col"></div>
+    </div>
+    <div class="team group">
+      <button class="member">
+        <span class="icon" style="background:transparent url(https://play.pokemonshowdown.com/sprites/smicons-sheet.png?a5) no-repeat scroll -240px -1380px"></span>
+        100%
+      </button>
+      <button class="member">
+        <span class="icon" style="background:transparent url(https://play.pokemonshowdown.com/sprites/smicons-sheet.png?a5) no-repeat scroll -0px -0px"></span>
+        ???
+      </button>
+      <button class="member"></button>
+      <button class="member"></button>
+      <button class="member"></button>
+      <button class="member"></button>
+    </div>
+    <div id="battle" class="group">
+      <!--<div id="p2"><b>Spikes:</b> 2 <b>Stealth Rock</b></div>-->
+      <div id="p2"></div>
+      <div id ="screen">
+        <img class="p2" src="https://play.pokemonshowdown.com./sprites/rse/registeel.png" />
+        <div class="p2 hpbar"></div>
+
+        <img class="p1" src="https://play.pokemonshowdown.com./sprites/rse-back/suicune.png" />
+        <div class="p1 hpbar">
+
+          <div class="status">
+        <span class="good">2×&nbsp;Atk</span>
+          </div>
+        </div>
+      </div>
+      <div id="p1"></div>
+      <!--<div id="p1"><b>SR</b> <b>Seeded</b> <b>LS:</b> 2 - 5 </div>-->
+    </div>
+    <div id="log" class="group">
+      <div class="hide">
+ZAPDOS used THUNDERBOLT!<br />
+It's super effective!<br />
+The opposing ALAKAZAM was hurt! <br />
+ZAPDOS's Defense fell!<br />
+ZAPDOS's Special Defense fell!<br /><br />
+The opposing ALAKAZAM used PSYCHIC!<br />
+ZAPDOS was hurt!<br />
+ZAPDOS's Defense fell!<br />
+The opposing ALAKAZAM lost some of its HP!<br /><br />
+The opposing ALAKAZAM fainted!<br /><br />
+The sandstorm is raging.<br />
+ZAPDOS is buffeted by the sandstorm!<br /><br />
+POKEI sent out CHANSEY!
+      </div>
+      <div class="content">
+pre withdrew Sudowoodo!<br />
+pre sent out <b>Genesect</b>!<br />
+<small>Pointed stones dug into the opposing Genesect!</small><br />
+<small>The opposing Genesect is hurt by the spikes!</small><br />
+<small>[The opposing Genesect's Download]</small><br />
+<small>The opposing Genesect's Special Attack rose!</small><br />
+<br />
+Crustle used <b>X-Scissor!</b><br />
+<small>It's not very effective...</small><br />
+<small>(The opposing Genesect lost 20% of its health!)</small><br />
+<br />
+<small>Crustle restored a little HP using its Leftovers!</small><br />
+<small>Crustle was hurt by poison!</small>
+      </div>
+    </div>
+    <div id="moves" class="group">
+      <div class="row">
+        <button class="move">
+          <div class="content">
+            <div class="name">Thunderbolt</div>
+            <div class="details">
+              <small class="type">Electric</small>
+              <small class="pp">14/16</small>
+            </div>
+          </div>
+        </button>
+        <button class="move"></button>
+      </div>
+      <div class="row">
+        <button class="move"></button>
+        <button class="move"></button>
+      </div>
+    </div>
+    <div class="team group">
+      <button class="member"></button>
+      <button class="member"></button>
+      <button class="member"></button>
+      <button class="member"></button>
+      <button class="member"></button>
+      <button class="member"></button>
+    </div>
+  </div>
+</body>
+</html>

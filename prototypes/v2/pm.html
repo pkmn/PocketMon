@@ -4,7 +4,6 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Test</title>
 <style>
-
 button, input[type="submit"], input[type="reset"] {
 	background: none;
 	color: inherit;
@@ -14,8 +13,6 @@ button, input[type="submit"], input[type="reset"] {
 	cursor: pointer;
 	outline: inherit;
 }
-
-
   #display {
     margin: 0px auto;
     display: flex;
@@ -32,26 +29,22 @@ button, input[type="submit"], input[type="reset"] {
     flex-direction: row;
     justify-content: space-evenly;
   }
-
   @media(min-width: 375px) {
     #display {
       width: 375px; /* 372 */
       height: 667px; /* 666 */
     }
   }
-
   @media(min-width: 411px) {
     #display {
       width: 411px; /* 410 */
       height: 731px; /* 730 */
     }
-
     .team {
       height: 80px;
         margin-top: 10px;
         margin-bottom: 5px;
     }
-
     .member {
       width: 60px;
       height: 80px;
@@ -92,7 +85,6 @@ button, input[type="submit"], input[type="reset"] {
       border: 1px solid black;
     }
   }
-
   .info {
     background-color: rgb(255, 0, 0, 0.5);
     z-index: 1;
@@ -100,7 +92,6 @@ button, input[type="submit"], input[type="reset"] {
     height: 182px;
       width: 100%;
     }
-
   .debug {
     background-color: rgb(0, 255, 0, 0.2);
     z-index: 1;
@@ -108,16 +99,13 @@ button, input[type="submit"], input[type="reset"] {
     height: 182px;
       width: 100%;
   }
-
   .d1 { top: 1px; height: 91px; }
   .p2 { top: 92px; }
   .d2 { top: 274px; }
   .p1 { top: 456px; }
   .d3 { top: 638px; height: 91px; }
-
   /** TODO */
   #display { border: 1px solid black; }
-
 </style>
 <body>
   <div id="display">
@@ -134,7 +122,7 @@ button, input[type="submit"], input[type="reset"] {
     <div id="battle" class="group"></div>
     <div class="debug d2"></div>
     <div id="log" class="group">
-   
+
     </div>
     <div class="info p1"></div>
     <div id="moves" class="group">
