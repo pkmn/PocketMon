@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <title>PocketMon</title>
+    <!-- TODO --><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="pm.css">
+  </head>
+  <body>
+    <div id="display">
+      <div id="topbar">
+        <div class="column turn">
+          <span id="turn"><b>Turn 1</b</span>
+        </div>
+        <div class="column timer">
+          <button id="timer"><i class="fas fa-hourglass-half"></i> 1:30 | 4:50</button>
+        </div>
+        <div class="column calc">
+          <button id="calc"><i class="fas fa-calculator"></i></button>
+        </div>
+      </div>
+      <div class="team p2 row">
+        <button class="member">
+          <div class="icon" title="Skarmory"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -440px -540px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <div class="icon" title="Tyranitar"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -320px -600px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <div class="icon" title="Gengar"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -400px -210px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <div class="icon" title="Aerodactyl"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -400px -330px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <div class="icon" title="Blissey"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -80px -600px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <span class="icon" title="???"
+                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -0px -0px"></span>
+          <div class="hp">100%</div>
+        </button>
+      </div>
+      <div id="battle">
+        <div class="sidebar p2"></div>
+        <div id ="screen">
+          <img class="sprite" src="resources/sprites/adv/static/front/normal/tyranitar.png" />
+          <div class="hpbar"></div>
+
+          <img class="sprite" src="resources/sprites/adv/static/back/normal/suicune.png" />
+          <div class="hpbar">
+            <div class="status">
+              <span class="good">+1&nbsp;SpA</span>
+              <span class="good">+1&nbsp;SpD</span>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar p1">
+          <div class="status">
+            <span class="bad">Stealth Rock</span>
+            <span class="bad">Spikes:&nbsp;3</span>
+            <span class="good">Light Screen:&nbsp;2/5</span>
+            <span class="good">Reflect:&nbsp;5/8</span>
+          </div>
+        </div>
+      </div>
+      <div id="log">
+        pre withdrew Sudowoodo!<br />
+        pre sent out <b>Genesect</b>!<br />
+        <small>Pointed stones dug into the opposing Genesect!</small><br />
+        <small>The opposing Genesect is hurt by the spikes!</small><br />
+        <small>[The opposing Genesect's Download]</small><br />
+        <small>The opposing Genesect's Special Attack rose!</small><br />
+        <br />
+        Crustle used <b>X-Scissor!</b><br />
+        <small>It's not very effective...</small><br />
+        <small>(The opposing Genesect lost 20% of its health!)</small><br />
+        <br />
+        <small>Crustle restored a little HP using its Leftovers!</small><br />
+        <small>Crustle was hurt by poison!</small>
+      </div>
+      <div id="moves">
+        <div class="row">
+          <button class="move">
+            <div class="spacer"></div>
+            <div class="name">Surf</div>
+            <div class="details">
+              <small class="type">Water</small>
+              <small class="pp">24/24</small>
+            </div>
+          </button>
+          <button class="move">
+            <div class="spacer"></div>
+            <div class="name">Ice Beam</div>
+            <div class="details">
+              <small class="type">Ice</small>
+              <small class="pp">16/16</small>
+            </div>
+          </button>
+        </div>
+        <div class="row">
+          <button class="move">
+            <div class="spacer"></div>
+            <div class="name">Hidden Power</div>
+            <div class="details">
+              <small class="type">Electric</small>
+              <small class="pp">24/24</small>
+            </div>
+          </button>
+          <button class="move">
+            <div class="spacer"></div>
+            <div class="name">Calm Mind</div>
+            <div class="details">
+              <small class="type">Psychic</small>
+              <small class="pp">31/32</small>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="team p1 row">
+        <button class="member">
+          <div class="icon" title="Suicune"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -200px -600px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <div class="icon" title="Celebi"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -440px -600px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <div class="icon" title="Swampert"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -320px -630px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <div class="icon" title="Tyranitar"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -320px -600px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <div class="icon" title="Dugtrio"
+               style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -120px -120px"></div>
+          <div class="hp">100%</div>
+        </button>
+        <button class="member">
+          <div class="icon" title="Jirachi"
+                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -40px -960px"></div>
+          <div class="hp">100%</div>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
