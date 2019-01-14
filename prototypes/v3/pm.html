@@ -3,11 +3,13 @@
   <meta charset="utf-8">
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>Test</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <style>
 
 body {
   font-family: Verdana;
   font-size: 13.3px;
+    margin: 0px;
 }
 
 
@@ -26,6 +28,7 @@ button, input[type="submit"], input[type="reset"] {
     display: flex;
     flex-direction: column;
     position: relative;
+      overflow: hidden;
   }
   .team {
     display: flex;
@@ -42,27 +45,50 @@ button, input[type="submit"], input[type="reset"] {
     text-align: center;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .move .pp {
     float: right;
     font-size: 7pt;
+    padding: 3px;
   }
   .move .type {
     float: left;
     font-size: 7pt;
+    padding: 3px;
   }
 
-  @media(min-width: 411px) {
+
+  .move .name, .move .spacer {
+    flex: 1;
+    }
+  @media(min-height: 732px) {
+    body {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media(min-width: 391px) {
     #display {
-      width: 411px; /* 410 */
-      height: 731px; /* 730 */
+      width: 391px;
+      height: 712px;
     }
 
     .team {
       height: 60px;
+    }
+
+    .team.p2 {
       margin-top: 10px;
       margin-bottom: 5px;
+    }
+
+    .team.p1 {
+      margin-bottom: 10px;
+      margin-top: 5px;
     }
 
     .top {
@@ -70,15 +96,25 @@ button, input[type="submit"], input[type="reset"] {
       border-bottom: 1px solid black;
     }
     .top div {
-      width:calc(100% / 3);
+      width: 30%;
       float: left;
+    }
+
+    .top .calc button{
+      float: right;
+
+    margin-right: 6px;
+    }
+
+    .top div.timer {
+      width: 40%;
     }
 
     #p1, #p2 {
       height: 18px;
       font-size: 7pt;
     }
-    #screen {
+    #screen { /* 361 x 194 */
       height: 192px;
       border-top: 1px solid black;
       border-bottom: 1px solid black;
@@ -97,7 +133,7 @@ button, input[type="submit"], input[type="reset"] {
     }
     #battle {
       height: 230px;
-      margin-top: 12px;
+      margin-top: 7px;
       margin-left: 10px;
       margin-right: 10px;
       border: 5px solid black;
@@ -146,12 +182,15 @@ button, input[type="submit"], input[type="reset"] {
   .col.timer {
     text-align: center;
   }
-  button.timer {
+ .top button {
     margin-top: 3px;
     padding: 3px;
   }
 
+
+
   .turn {
+    display: block;
     margin-left: 6px;
     margin-top: 6px;
   }
@@ -189,7 +228,7 @@ button, input[type="submit"], input[type="reset"] {
 
   #battle img.p2 {
     top: -30px;
-    right: -212px;
+    right: -192px;
   }
 
   #battle img.p1 {
@@ -206,15 +245,19 @@ button, input[type="submit"], input[type="reset"] {
 
   .hpbar.p1 {
     bottom: 242px;
-    left: 212px;
+    left: 192px;
   }
 
   .status  {
     color: #fff;
     border-radius: 3px;
-    padding: 0 2px;
+    padding: 3px 2px 0px 2px;
     min-height: 10px;
     font-size: 7pt;
+  }
+
+  .hpbar .status {
+    padding-top: 7px;
   }
 
   .status .good {
@@ -241,22 +284,27 @@ button, input[type="submit"], input[type="reset"] {
   }
   </style>
   <body>
+    <div class="spacer"></div>
     <div id="display">
       <div class="debug d0"></div>
       <div class="debug d1"></div>
       <div class="debug d2"></div>
       <div class="top">
-        <div class="col"><div class="turn">Turn 1</div></div>
-        <div class="col timer"><button class="timer">1:30 | 4:50</button></div>
-        <div class="col"></div>
+        <div class="col"><span class="turn"><b>Turn 1</b></span></div>
+        <div class="col timer">
+            <button class="timer"><i class="fas fa-hourglass-half"></i> 1:30 | 4:50</button>
+        </div>
+        <div class="calc">
+          <button><i class="fas fa-calculator"></i></button>
+        </div>
       </div>
-      <div class="team group">
+      <div class="team group p2">
         <button class="member">
-          <span class="icon" style="background:transparent url(https://play.pokemonshowdown.com/sprites/smicons-sheet.png?a5) no-repeat scroll -240px -1380px"></span>
+          <span class="icon" style="background:transparent url(../../resources/icons/sm/sheet.png) no-repeat scroll -240px -1380px"></span>
           100%
         </button>
         <button class="member">
-          <span class="icon" style="background:transparent url(https://play.pokemonshowdown.com/sprites/smicons-sheet.png?a5) no-repeat scroll -0px -0px"></span>
+          <span class="icon" style="background:transparent url(../../resources/icons/sm/sheet.png) no-repeat scroll -0px -0px"></span>
           ???
         </button>
         <button class="member"></button>
@@ -268,10 +316,10 @@ button, input[type="submit"], input[type="reset"] {
         <!--<div id="p2"><b>Spikes:</b> 2 <b>Stealth Rock</b></div>-->
         <div id="p2"></div>
         <div id ="screen">
-          <img class="p2" src="https://play.pokemonshowdown.com./sprites/rse/registeel.png" />
+          <img class="p2" src="../../resources/sprites/adv/static/front/normal/registeel.png" />
           <div class="p2 hpbar"></div>
 
-          <img class="p1" src="https://play.pokemonshowdown.com./sprites/rse-back/suicune.png" />
+          <img class="p1" src="../../resources/sprites/adv/static/back/normal/suicune.png" />
           <div class="p1 hpbar">
 
             <div class="status">
@@ -326,6 +374,7 @@ button, input[type="submit"], input[type="reset"] {
         <div class="row">
           <button class="move">
             <div class="content">
+    <div class="spacer"></div>
               <div class="name">Thunderbolt</div>
               <div class="details">
                 <small class="type">Electric</small>
@@ -340,7 +389,7 @@ button, input[type="submit"], input[type="reset"] {
           <button class="move"></button>
         </div>
       </div>
-      <div class="team group">
+      <div class="team group p1">
         <button class="member"></button>
         <button class="member"></button>
         <button class="member"></button>
@@ -349,5 +398,6 @@ button, input[type="submit"], input[type="reset"] {
         <button class="member"></button>
       </div>
     </div>
+    <div class="spacer"></div>
   </body>
 </html>
