@@ -376,6 +376,49 @@ button, input[type="submit"], input[type="reset"] {
 	border-color: #555555;
 }
 
+.sunnyday  {
+	background: #FFEEBB url(resources/weather/static/sunnyday.jpg) no-repeat scroll left top;
+	color: #664411;
+}
+.raindance {
+	background: #99BBFF url(resources/weather/static/raindance.jpg) no-repeat scroll left top;
+	color: #0044BB;
+}
+.sandstorm {
+	background: #E6E0AC url(resources/weather/static/sandstorm.png) no-repeat scroll left top;
+	color: #554433;
+}
+.hail {
+	background: #AADDEE url(resources/weather/static/hail.png) no-repeat scroll left top;
+	color: #114455;
+}
+.strongwind {
+	background: #AAAAAA url(resources/weather/static/strongwind.png) no-repeat scroll left top;
+	color: #666666;
+}
+.trickroom {
+	background: #DDAAEE url(resources/weather/static/trickroom.png) no-repeat scroll left top;
+	color: #661155;
+}
+.mistyterrain {
+	background: #EEAACC url(resources/terrain/misty.png) no-repeat scroll left top;
+	color: #551144;
+}
+.electricterrain {
+	background: #EEEEAA url(resources/terrain/electric.png) no-repeat scroll left top;
+	color: #444411;
+}
+.grassyterrain {
+	background: #CCEEAA url(resources/terrain/grassy.png) no-repeat scroll left top;
+	color: #335511;
+}
+.psychicterrain {
+	background: #CCAAEE url(resources/terrain/psychic.png) no-repeat scroll left top;
+	color: #441155;
+}
+
+
+
 
 /* .status { display: none; } /* TODO */
 
