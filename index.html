@@ -63,18 +63,46 @@
         </button>
       </div>
       <div id="battle">
-        <div class="sidebar p2"></div>
+        <div class="sidebar p2">
+          <div class="status">
+            <span class="good">Reflect:&nbsp;1/5 (4/8)</span>
+            <span class="bad">Spikes:&nbsp;1</span>
+          </div>
+        </div>
         <div id ="screen">
-          <img class="sprite" src="resources/sprites/adv/static/front/normal/tyranitar.png" />
-          <div class="hpbar"></div>
-
-          <img class="sprite" src="resources/sprites/adv/static/back/normal/suicune.png" />
-          <div class="hpbar">
-            <div class="status">
-              <span class="good">+1&nbsp;SpA</span>
-              <span class="good">+1&nbsp;SpD</span>
+          <img class="sprite p2" src="resources/sprites/adv/static/front/normal/tyranitar.png" />
+          <div class="statbar rstatbar p2" style="display: block; opacity: 1;">
+            <strong>Tyranitar <small style="color:#7575C0">♂</small></strong>
+            <div class="hpbar">
+              <div class="hptext">79%</div>
+              <div class="hptextborder"></div>
+              <div class="prevhp" style="width: 135px;">
+                <div class="hp" style="width: 119px; border-right-width: 1px;"></div>
+              </div>
+              <div class="status">
+                <span class="bad">-1 Def</span>
+                <span class="bad">-1 SpD</span>
+              </div>
             </div>
           </div>
+
+
+
+          <img class="sprite p1" src="resources/sprites/adv/static/back/normal/suicune.png" />
+          <div class="statbar lstatbar p1" style="display: block; opacity: 1;">
+            <strong>Suicune <small style="color:#7575C0">♂</small></strong>
+            <div class="hpbar">
+              <div class="hptext">48%</div>
+              <div class="hptextborder"></div>
+              <div class="prevhp" style="width: 151px;">
+                <div class="hp hp-yellow" style="width: 72px; border-right-width: 1px;"></div>
+              </div>
+              <div class="status">
+                <span class="psn">TOX</span>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="sidebar p1">
           <div class="status">
@@ -103,37 +131,45 @@
       <div id="moves">
         <div class="row">
           <button class="move">
-            <div class="spacer"></div>
-            <div class="name">Surf</div>
-            <div class="details">
-              <small class="type">Water</small>
-              <small class="pp">24/24</small>
+            <div class="info">
+              <div class="spacer"></div>
+              <div class="name">Surf</div>
+              <div class="details">
+                <small class="type">Water</small>
+                <small class="pp">24/24</small>
+              </div>
             </div>
           </button>
           <button class="move">
-            <div class="spacer"></div>
-            <div class="name">Ice Beam</div>
-            <div class="details">
-              <small class="type">Ice</small>
-              <small class="pp">16/16</small>
+            <div class="info">
+              <div class="spacer"></div>
+              <div class="name">Ice Beam</div>
+              <div class="details">
+                <small class="type">Ice</small>
+                <small class="pp">16/16</small>
+              </div>
             </div>
           </button>
         </div>
         <div class="row">
           <button class="move">
-            <div class="spacer"></div>
-            <div class="name">Hidden Power</div>
-            <div class="details">
-              <small class="type">Electric</small>
-              <small class="pp">24/24</small>
+            <div class="info">
+              <div class="spacer"></div>
+              <div class="name">Hidden Power</div>
+              <div class="details">
+                <small class="type">Electric</small>
+                <small class="pp">24/24</small>
+              </div>
             </div>
           </button>
           <button class="move">
-            <div class="spacer"></div>
-            <div class="name">Calm Mind</div>
-            <div class="details">
-              <small class="type">Psychic</small>
-              <small class="pp">31/32</small>
+            <div class="info">
+              <div class="spacer"></div>
+              <div class="name">Calm Mind</div>
+              <div class="details">
+                <small class="type">Psychic</small>
+                <small class="pp">31/32</small>
+              </div>
             </div>
           </button>
         </div>
