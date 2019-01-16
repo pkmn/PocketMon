@@ -20,18 +20,22 @@
   <body>
     <div id="display">
       <div id="topbar">
-        <div class="column turn">
+        <div class="column">
           <span id="turn">Turn 1</span>
         </div>
         <div class="column timer">
-          <button id="timer"><i class="fas fa-hourglass-half"></i> 1:30 | 4:50</button>
+          <button id="timer" class="off"><i class="fas fa-hourglass-half"></i> 1:30 | 4:50</button>
         </div>
-        <div class="column calc">
-          <button id="calc"><i class="fas fa-calculator"></i></button>
+        <div class="column">
+          <div class="buttons">
+            <button id="calc"><i class="fas fa-calculator"></i></button>
+            <button id="epoke"><i class="fas fa-syringe"></i></button>
+            <button id="settings"><i class="fas fa-cog"></i></button>
+          </div>
         </div>
       </div>
       <div class="team p2 row">
-        <button class="member">
+        <button class="member slp">
           <div class="icon" title="Skarmory"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -440px -540px"></div>
           <div class="hp hpbar-yellow">22%</div>
@@ -47,7 +51,7 @@
             <span style="width:38px"></span>
           </span>
         </button>
-        <button class="member">
+        <button class="member brn">
           <div class="icon" title="Gengar"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -400px -210px"></div>
           <div class="hp">12%</div>
@@ -55,7 +59,7 @@
             <span style="width:6px"></span>
           </span>
         </button>
-        <button class="member">
+        <button class="member psn">
           <div class="icon" title="Aerodactyl"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -400px -330px"></div>
           <div class="hp">100%</div>
@@ -193,7 +197,7 @@
         </div>
       </div>
       <div class="team p1 row">
-        <button class="member">
+        <button class="member psn">
           <div class="icon" title="Suicune"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -200px -600px"></div>
           <div class="hp">48%</div>
@@ -209,7 +213,7 @@
             <span style="width:17px"></span>
           </span>
         </button>
-        <button class="member">
+        <button class="member frz">
           <div class="icon" title="Swampert"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -320px -630px"></div>
           <div class="hp">43%</div>
@@ -233,7 +237,7 @@
             <span style="width:48px"></span>
           </span>
         </button>
-        <button class="member">
+        <button class="member par">
           <div class="icon" title="Jirachi"
                 style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -40px -960px"></div>
           <div class="hp">64%</div>

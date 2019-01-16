@@ -52,7 +52,7 @@ button, input[type="submit"], input[type="reset"] {
   border-bottom: 1px solid black;
 }
 
-#topbar .column.turn, #topbar .column.calc {
+#topbar .column {
   width: 30%;
   float: left;
 }
@@ -60,12 +60,29 @@ button, input[type="submit"], input[type="reset"] {
 #topbar .column.timer {
   width: 40%;
   text-align: center;
-  float: left;
+}
+
+#timer.on,
+#timer.on:hover {
+	color: #992222;
+	border-color: #992222;
+}
+#timer.on:hover {
+	border-color: #661111;
+}
+#timer.critical,
+#timer.critical:hover {
+	color: #ffffff;
+	font-weight: bold;
+	border-color: #BB2222;
+	background: #BB2222;
+	text-shadow: none;
 }
 
 #topbar button {
-  margin-top: 3px;
-  padding: 3px;
+  margin-top: 2px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 #turn {
@@ -82,11 +99,10 @@ button, input[type="submit"], input[type="reset"] {
   background: white;
 }
 
-#calc {
+.buttons {
   float: right;
   margin-right: 6px;
 }
-
 
 /* TODO */
 
@@ -443,24 +459,6 @@ button, input[type="submit"], input[type="reset"] {
   margin-bottom: 5px;
 }
 
-/*
-.team button {
-	position: relative;
-	display: block;
-	float: left;
-	width: 102px;
-	min-height: 30px;
-	margin-right: 4px;
-	padding: 5px 5px 5px 0;
-	white-space: pre;
-	font: 9pt Verdana, sans-serif;
-	overflow: hidden;
-}*/
-.team button .picon {
-	float: left;
-	margin: -6px -3px -6px -4px;
-	opacity: 0.8;
-}
 .team button .hpbar {
 	position: absolute;
 	display: block;
@@ -559,6 +557,7 @@ button, input[type="submit"], input[type="reset"] {
   margin-right: -10px;
   padding-left: 4px;
 }*/
+#topbar button,
 .team button,
 #moves button {
 	position: relative;
@@ -576,17 +575,19 @@ button, input[type="submit"], input[type="reset"] {
 	background: #e3e3e3;
 	background: linear-gradient(to bottom,  #f6f6f6,  #e3e3e3);
 }
+#topbar button:hover,
 .team button:hover,
 #moves button:hover {
 	background: #cfcfcf;
 	background: linear-gradient(to bottom,  #f2f2f2,  #cfcfcf);
 	border-color: #606060;
 }
+#topbar button:active,
 .team button:active,
 #moves button:active {
 	background: linear-gradient(to bottom,  #cfcfcf,  #f2f2f2);
 }
-
+#topbar button:disabled,
 .team button.disabled,
 .team button:disabled,
 #moves button:disabled {
@@ -1012,8 +1013,69 @@ button, input[type="submit"], input[type="reset"] {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /* .status { display: none; } /* TODO */
 
+.member.psn::before {
+    content:"";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(164, 0, 154, 0.15); /* #A4009A */
+}
+.member.brn::before {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(238, 85, 51, 0.15); /* #EE5533 */
+}
+.member.par::before {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(154, 164, 0, 0.15); /* #9AA400 */
+}
+.member.slp::before {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(170, 119, 170, 0.15); /* #AA77AA */
+}
+.member.frz::before {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 154, 164, 0.15); /* #009AA4 */
+}
 
 @media(min-height: 732px) {
   body {
