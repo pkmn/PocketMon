@@ -3,6 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width,initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#ff0000">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
     <title>PocketMon</title>
     <!-- TODO --><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -12,7 +21,7 @@
     <div id="display">
       <div id="topbar">
         <div class="column turn">
-          <span id="turn"><b>Turn 1</b</span>
+          <span id="turn">Turn 1</span>
         </div>
         <div class="column timer">
           <button id="timer"><i class="fas fa-hourglass-half"></i> 1:30 | 4:50</button>
@@ -25,47 +34,93 @@
         <button class="member">
           <div class="icon" title="Skarmory"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -440px -540px"></div>
-          <div class="hp">100%</div>
+          <div class="hp hpbar-yellow">22%</div>
+          <span class="hpbar">
+            <span style="width:11px"></span>
+          </span>
         </button>
         <button class="member">
           <div class="icon" title="Tyranitar"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -320px -600px"></div>
-          <div class="hp">100%</div>
+          <div class="hp">79%</div>
+          <span class="hpbar">
+            <span style="width:38px"></span>
+          </span>
         </button>
         <button class="member">
           <div class="icon" title="Gengar"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -400px -210px"></div>
-          <div class="hp">100%</div>
+          <div class="hp">12%</div>
+          <span class="hpbar hpbar-red">
+            <span style="width:6px"></span>
+          </span>
         </button>
         <button class="member">
           <div class="icon" title="Aerodactyl"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -400px -330px"></div>
           <div class="hp">100%</div>
+          <span class="hpbar">
+            <span style="width:48px"></span>
+          </span>
         </button>
         <button class="member">
           <div class="icon" title="Blissey"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -80px -600px"></div>
-          <div class="hp">100%</div>
+          <div class="hp">85%</div>
+          <span class="hpbar">
+            <span style="width:41px"></span>
+          </span>
         </button>
         <button class="member">
           <span class="icon" title="???"
                 style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -0px -0px"></span>
           <div class="hp">100%</div>
+          <span class="hpbar">
+            <span style="width:48px"></span>
+          </span>
         </button>
       </div>
       <div id="battle">
-        <div class="sidebar p2"></div>
-        <div id ="screen">
-          <img class="sprite" src="resources/sprites/adv/static/front/normal/tyranitar.png" />
-          <div class="hpbar"></div>
-
-          <img class="sprite" src="resources/sprites/adv/static/back/normal/suicune.png" />
-          <div class="hpbar">
-            <div class="status">
-              <span class="good">+1&nbsp;SpA</span>
-              <span class="good">+1&nbsp;SpD</span>
+        <div class="sidebar p2">
+          <div class="status">
+            <span class="good">Reflect:&nbsp;1/5 (4/8)</span>
+            <span class="bad">Spikes:&nbsp;1</span>
+          </div>
+        </div>
+        <div id ="screen" class="sandstorm">
+          <img class="sprite p2" src="resources/sprites/adv/static/front/normal/tyranitar.png" />
+          <div class="statbar rstatbar p2" style="display: block; opacity: 1;">
+            <strong>Tyranitar <small style="color:#7575C0">♂</small></strong>
+            <div class="hpbar">
+              <div class="hptext">79%</div>
+              <div class="hptextborder"></div>
+              <div class="prevhp" style="width: 135px;">
+                <div class="hp" style="width: 119px; border-right-width: 1px;"></div>
+              </div>
+              <div class="status">
+                <span class="bad">-1 Def</span>
+                <span class="bad">-1 SpD</span>
+              </div>
             </div>
           </div>
+
+
+
+          <img class="sprite p1" src="resources/sprites/adv/static/back/normal/suicune.png" />
+          <div class="statbar lstatbar p1" style="display: block; opacity: 1;">
+            <strong>Suicune <small style="color:#7575C0">♂</small></strong>
+            <div class="hpbar">
+              <div class="hptext">48%</div>
+              <div class="hptextborder"></div>
+              <div class="prevhp" style="width: 151px;">
+                <div class="hp hp-yellow" style="width: 72px; border-right-width: 1px;"></div>
+              </div>
+              <div class="status">
+                <span class="psn">TOX</span>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="sidebar p1">
           <div class="status">
@@ -93,38 +148,46 @@
       </div>
       <div id="moves">
         <div class="row">
-          <button class="move">
-            <div class="spacer"></div>
-            <div class="name">Surf</div>
-            <div class="details">
-              <small class="type">Water</small>
-              <small class="pp">24/24</small>
+          <button class="move type-Water">
+            <div class="info">
+              <div class="spacer"></div>
+              <div class="name">Surf</div>
+              <div class="details">
+                <small class="type">Water</small>
+                <small class="pp">24/24</small>
+              </div>
             </div>
           </button>
-          <button class="move">
-            <div class="spacer"></div>
-            <div class="name">Ice Beam</div>
-            <div class="details">
-              <small class="type">Ice</small>
-              <small class="pp">16/16</small>
+          <button class="move type-Ice">
+            <div class="info">
+              <div class="spacer"></div>
+              <div class="name">Ice Beam</div>
+              <div class="details">
+                <small class="type">Ice</small>
+                <small class="pp">16/16</small>
+              </div>
             </div>
           </button>
         </div>
         <div class="row">
-          <button class="move">
-            <div class="spacer"></div>
-            <div class="name">Hidden Power</div>
-            <div class="details">
-              <small class="type">Electric</small>
-              <small class="pp">24/24</small>
+          <button class="move type-Electric">
+            <div class="info">
+              <div class="spacer"></div>
+              <div class="name">Hidden Power</div>
+              <div class="details">
+                <small class="type">Electric</small>
+                <small class="pp">24/24</small>
+              </div>
             </div>
           </button>
-          <button class="move">
-            <div class="spacer"></div>
-            <div class="name">Calm Mind</div>
-            <div class="details">
-              <small class="type">Psychic</small>
-              <small class="pp">31/32</small>
+          <button class="move type-Psychic">
+            <div class="info">
+              <div class="spacer"></div>
+              <div class="name">Calm Mind</div>
+              <div class="details">
+                <small class="type">Psychic</small>
+                <small class="pp">31/32</small>
+              </div>
             </div>
           </button>
         </div>
@@ -133,32 +196,50 @@
         <button class="member">
           <div class="icon" title="Suicune"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -200px -600px"></div>
-          <div class="hp">100%</div>
+          <div class="hp">48%</div>
+          <span class="hpbar hpbar-yellow">
+            <span style="width:23px"></span>
+          </span>
         </button>
         <button class="member">
           <div class="icon" title="Celebi"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -440px -600px"></div>
-          <div class="hp">100%</div>
+          <div class="hp hpbar-yellow">36%</div>
+          <span class="hpbar">
+            <span style="width:17px"></span>
+          </span>
         </button>
         <button class="member">
           <div class="icon" title="Swampert"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -320px -630px"></div>
-          <div class="hp">100%</div>
+          <div class="hp">43%</div>
+          <span class="hpbar hpbar-yellow">
+            <span style="width:21px"></span>
+          </span>
         </button>
         <button class="member">
           <div class="icon" title="Tyranitar"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -320px -600px"></div>
-          <div class="hp">100%</div>
+          <div class="hp">81%</div>
+          <span class="hpbar">
+            <span style="width:39px"></span>
+          </span>
         </button>
         <button class="member">
           <div class="icon" title="Dugtrio"
                style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -120px -120px"></div>
           <div class="hp">100%</div>
+          <span class="hpbar">
+            <span style="width:48px"></span>
+          </span>
         </button>
         <button class="member">
           <div class="icon" title="Jirachi"
                 style="background:transparent url(resources/icons/sm/sheet.png) no-repeat scroll -40px -960px"></div>
-          <div class="hp">100%</div>
+          <div class="hp">64%</div>
+          <span class="hpbar">
+            <span style="width:31px"></span>
+          </span>
         </button>
       </div>
     </div>

@@ -4,8 +4,18 @@ body {
   margin: 0px;
 }
 
+#display, #topbar {
+	background: #e3e3e3;
+	background: linear-gradient(to bottom,  #f6f6f6,  #e3e3e3);
+}
+
+#battle, #log {
+  background: white;
+}
+
 button, input[type="submit"], input[type="reset"] {
-  background: none;
+  font-family: Verdana;
+ /* background: none;
   color: inherit;
   padding: 0;
   font: inherit;
@@ -22,11 +32,7 @@ button, input[type="submit"], input[type="reset"] {
   justify-content: space-evenly;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
+
 
 #display {
   /* 393x714 */
@@ -48,11 +54,13 @@ button, input[type="submit"], input[type="reset"] {
 
 #topbar .column.turn, #topbar .column.calc {
   width: 30%;
+  float: left;
 }
 
 #topbar .column.timer {
   width: 40%;
   text-align: center;
+  float: left;
 }
 
 #topbar button {
@@ -61,9 +69,17 @@ button, input[type="submit"], input[type="reset"] {
 }
 
 #turn {
-  display: block;
+  display: inline-block;
   margin-left: 6px;
-  margin-top: 6px;
+  margin-top: 3px;
+
+	font-weight: bold;
+	padding: 2px 8px;
+	border: 2px solid #332200;
+	border-radius: 6px;
+	/*color: #332200;
+	background: #FCFAF2;*/
+  background: white;
 }
 
 #calc {
@@ -75,21 +91,22 @@ button, input[type="submit"], input[type="reset"] {
 /* TODO */
 
 .team {
-  height: 60px;
+  height: 55px;
 }
 
 .team.p2 {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 
 .team.p1 {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   margin-top: 5px;
 }
 .member {
   width: 60px;
-  height: 60px;
+  height: 55px;
+  font-size: 7pt;
 }
 
 .icon {
@@ -107,8 +124,8 @@ button, input[type="submit"], input[type="reset"] {
 
 
 #battle {
-  height: 230px;
-  margin-top: 7px;
+  height: 250px;
+  margin-top: 2px;
   margin-left: 10px;
   margin-right: 10px;
   border: 5px solid black;
@@ -123,59 +140,45 @@ button, input[type="submit"], input[type="reset"] {
   height: 192px;
 }
 
-#battle img.p2 {
-  top: -30px;
+#battle .sprite.p2 {
+  top: -25px;
   right: -192px;
 }
 
-#battle img.p1 {
-  bottom: 168px;
+#battle .sprite.p1 {
+  bottom: 143px;
   right: 20px;
 }
 
-.hpbar {
-  height: 5px;
-  position: relative;
-  background-color: green;
-  width: 151px;
+#battle .statbar.p2 {
+  top: 145px;
+  left: 20px;
 }
 
-.hpbar.p1 {
-  bottom: 242px;
-  left: 192px;
+#battle .statbar.p1 {
+  top: 255px;
+  right: 20px;
 }
 
-.status  {
-  color: #fff;
-  border-radius: 3px;
-  padding: 3px 2px 0px 2px;
-  min-height: 10px;
-  font-size: 7pt;
-}
-
-.hpbar .status {
-  padding-top: 7px;
-}
-
-.status .good {
-  background: #E5FFE0;
-  color: #33AA00;
-  border-color: #33AA00;
-}
-
-.status .bad {
-  background: #FFE5E0;
-  color: #FF4400;
-  border-color: #FF4400;
-}
 
 .sidebar {
   height: 18px;
   font-size: 7pt;
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin: 0px 2px;
 }
 
-#screen { /* 361 x 194 */
-  height: 192px;
+.sidebar.p2 .status {
+  float: right;
+}
+
+.sidebar .status {
+  padding-top: 3px;
+}
+
+#screen { /* 361 x 214 */
+  height: 212px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
@@ -188,6 +191,7 @@ button, input[type="submit"], input[type="reset"] {
   border-bottom-right-radius: 10px;
   overflow: scroll;
   padding: 10px;
+  margin-bottom: 2px;
 }
 
 #log {
@@ -196,33 +200,12 @@ button, input[type="submit"], input[type="reset"] {
   border-bottom: 5px solid black;
 }
 
-.status span {
-  padding: 0px 1px;
-  border: 1px solid #FF4400;
-  border-radius: 3px;
-}
-
-.hpbar.p2 {
-  top: -172px;
-  right: -20px;
-}
-
-
-
-
-
-
-#moves {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
 .move {
   height: 75px;
   margin-top: 5px;
   width: 190px;
 }
-.move .content {
+.move .info {
   text-align: center;
   width: 100%;
   height: 100%;
@@ -249,6 +232,787 @@ button, input[type="submit"], input[type="reset"] {
 
 
 
+
+.statbar {
+  position: absolute;
+	display: none;
+	width: 154px;
+	min-height: 40px;
+	padding: 2px 4px;
+}
+.statbar strong {
+	margin: 0 -15px;
+	display: block;
+	text-align: center;
+	color: #222222;
+	text-shadow: #FFFFFF 1px 1px 0, #FFFFFF 1px -1px 0, #FFFFFF -1px 1px 0, #FFFFFF -1px -1px 0;
+}
+.statbar strong small {
+	font-weight: normal;
+}
+.statbar .hpbar {
+	position: relative;
+	border: 1px solid #777777;
+	background: #FCFEFF;
+	padding: 1px;
+	height: 8px;
+	margin: 0 0 0 0;
+	width: 151px;
+	border-radius: 4px;
+}
+
+/* The declaration order of these hp* classes is significant. */
+
+.statbar .hpbar .hp {
+	height: 4px;
+	border-top: 2px solid #00dd60;
+	background: #00bb51;
+	border-bottom: 2px solid #007734;
+	border-right: 1px solid #007734;
+	border-radius: 3px;
+}
+.statbar .hpbar .hp-yellow {
+	border-top-color: #f8e379;
+	background-color: #f5d538;
+	border-bottom-color: #be9f0a;
+	border-right-color: #be9f0a;
+}
+.statbar .hpbar .hp-red {
+	border-top-color: #f37f67;
+	background-color: #ee4928;
+	border-bottom-color: #a3260d;
+	border-right-color: #a3260d;
+}
+
+/* The declaration order of these prevhp* classes is significant. */
+
+.statbar .hpbar .prevhp {
+	background: #BBEECC;
+	height: 8px;
+	border-radius: 3px;
+}
+.statbar .hpbar .prevhp-yellow {
+	background-color: #fcf4ca;
+}
+.statbar .hpbar .prevhp-red {
+	background-color: #facec5;
+}
+
+/****************/
+
+.statbar .hpbar .hptext {
+	position: absolute;
+	background: #777777;
+	color: #EEEEEE;
+	text-shadow: #000000 0 1px 0;
+	text-stroke: 1px #000000;
+	font-size: 9px;
+	width: 32px;
+	height: 12px;
+	top: -1px;
+	text-align: center;
+}
+.statbar .hpbar .hptextborder {
+	position: absolute;
+	background: transparent;
+	border-top: 1px solid #777777;
+	border-bottom: 1px solid #777777;
+	width: 4px;
+	top: -1px;
+	height: 10px;
+}
+.rstatbar .hpbar .hptext {
+	right: -32px;
+	border-radius: 0 4px 4px 0;
+}
+.lstatbar .hpbar .hptext {
+	left: -32px;
+	border-radius: 4px 0 0 4px;
+}
+.rstatbar .hpbar .hptextborder {
+	right: -3px;
+}
+.lstatbar .hpbar .hptextborder {
+	left: -3px;
+}
+.status {
+	min-height: 10px;
+	font-size: 7pt;
+}
+.status img {
+	vertical-align: top;
+	top: -2px;
+	position: relative;
+}
+.status span {
+	padding: 0px 1px;
+	border: 1px solid #FF4400;
+	border-radius: 3px;
+}
+.status span.brn,
+.status span.psn,
+.status span.slp,
+.status span.par,
+.status span.frz {
+	padding: 1px 2px;
+	border: 0;
+	border-radius: 3px;
+}
+.status span.brn {
+	background: #EE5533;
+	color: #FFFFFF;
+}
+.status span.psn {
+	background: #A4009A;
+	color: #FFFFFF;
+}
+.status span.par {
+	background: #9AA400;
+	color: #FFFFFF;
+}
+.status span.slp {
+	background: #AA77AA;
+	color: #FFFFFF;
+}
+.status span.frz {
+	background: #009AA4;
+	color: #FFFFFF;
+}
+.status span.bad {
+	background: #FFE5E0;
+	color: #FF4400;
+	border-color: #FF4400;
+}
+.status span.good {
+	background: #E5FFE0;
+	color: #33AA00;
+	border-color: #33AA00;
+}
+.status span.neutral {
+	background: #F0F0F0;
+	color: #555555;
+	border-color: #555555;
+}
+
+.sunnyday  {
+	background: #FFEEBB url(resources/weather/static/sunnyday.jpg) no-repeat scroll left top;
+	color: #664411;
+}
+.raindance {
+	background: #99BBFF url(resources/weather/static/raindance.jpg) no-repeat scroll left top;
+	color: #0044BB;
+}
+.sandstorm {
+	background: #E6E0AC url(resources/weather/static/sandstorm.png) no-repeat scroll left top;
+	color: #554433;
+}
+.hail {
+	background: #AADDEE url(resources/weather/static/hail.png) no-repeat scroll left top;
+	color: #114455;
+}
+.strongwind {
+	background: #AAAAAA url(resources/weather/static/strongwind.png) no-repeat scroll left top;
+	color: #666666;
+}
+.trickroom {
+	background: #DDAAEE url(resources/weather/static/trickroom.png) no-repeat scroll left top;
+	color: #661155;
+}
+.mistyterrain {
+	background: #EEAACC url(resources/terrain/misty.png) no-repeat scroll left top;
+	color: #551144;
+}
+.electricterrain {
+	background: #EEEEAA url(resources/terrain/electric.png) no-repeat scroll left top;
+	color: #444411;
+}
+.grassyterrain {
+	background: #CCEEAA url(resources/terrain/grassy.png) no-repeat scroll left top;
+	color: #335511;
+}
+.psychicterrain {
+	background: #CCAAEE url(resources/terrain/psychic.png) no-repeat scroll left top;
+	color: #441155;
+}
+
+
+
+
+
+.team button .hp {
+  margin-bottom: 5px;
+}
+
+/*
+.team button {
+	position: relative;
+	display: block;
+	float: left;
+	width: 102px;
+	min-height: 30px;
+	margin-right: 4px;
+	padding: 5px 5px 5px 0;
+	white-space: pre;
+	font: 9pt Verdana, sans-serif;
+	overflow: hidden;
+}*/
+.team button .picon {
+	float: left;
+	margin: -6px -3px -6px -4px;
+	opacity: 0.8;
+}
+.team button .hpbar {
+	position: absolute;
+	display: block;
+	border: 1px solid #AAA;
+	background: #EEE;
+	height: 2px;
+	bottom: 2px; left: 4px; right: 4px;
+	border-radius: 2px;
+	opacity: .8;
+}
+
+/* The declaration order of these three hpbar* classes is significant. */
+
+.team button .hpbar span {
+	display: block;
+	height: 1px;
+	background: #0A6;
+	border-top: 1px solid #3C0;
+	border-radius: 1px;
+}
+.team button .hpbar-yellow span {
+	border-top-color: #f8e379;
+	background-color: #f5d538;
+	/*border-top-color: #a5aa53;
+	background-color: #a2a822;*/
+}
+.team button .hpbar-red span {
+	border-top-color: #f37f67;
+	background-color: #ee4928;
+	/*border-top-color: #faa;
+	background-color: #f55; */
+}
+
+/****************/
+
+.team button .status {
+	position: absolute;
+	display: block;
+	right: 2px;
+	bottom: 1px;
+	width: 5px;
+	height: 5px;
+	padding: 0;
+	border-radius: 2px;
+	border: 1px solid #C2C2C2;
+	opacity: 1.0;
+}
+.status {
+	color: white;
+	border-radius: 3px;
+	padding: 0 2px;
+}
+.status.brn {
+	background: #EE5533;
+}
+.status.psn, .status.tox {
+	background: #A4009A;
+}
+.status.par {
+	background: #9AA400;
+}
+.status.slp {
+	background: #AA77AA;
+}
+.status.frz {
+	background: #009AA4;
+}
+
+#moves button {
+	/*width: 155px;
+	display: block;
+	float: left;
+	margin-right: 4px;
+	padding:  6px 4px 0 4px;
+	position: relative;
+	height: 40px; */
+	font: 10pt/100% Verdana, sans-serif;
+}
+#moves button small {
+	color: #777777;
+}
+#moves button small.type {
+	padding-top: 3px;
+	float: left;
+	font-size: 7pt;
+}
+#moves button small.pp {
+	padding-top: 3px;
+	float: right;
+	font-size: 7pt;
+}
+/*
+.team,
+#moves {
+  display: block;
+  margin-right: -10px;
+  padding-left: 4px;
+}*/
+.team button,
+#moves button {
+	position: relative;
+	outline: none;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,.4);
+	border-radius: 5px;
+	/*margin-top: 4px;*/
+	box-shadow: 0 1px 2px rgba(0,0,0,.2), inset 0 -1px 2px rgba(255,255,255,1);
+
+	/* default colors */
+	color: #000000;
+	border: solid 1px #AAAAAA;
+	background: #e3e3e3;
+	background: linear-gradient(to bottom,  #f6f6f6,  #e3e3e3);
+}
+.team button:hover,
+#moves button:hover {
+	background: #cfcfcf;
+	background: linear-gradient(to bottom,  #f2f2f2,  #cfcfcf);
+	border-color: #606060;
+}
+.team button:active,
+#moves button:active {
+	background: linear-gradient(to bottom,  #cfcfcf,  #f2f2f2);
+}
+
+.team button.disabled,
+.team button:disabled,
+#moves button:disabled {
+	cursor: default;
+	background: #F3F3F3 !important;
+	border-color: #CCCCCC !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	color: #777777 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#moves button.type-Normal {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(60,14%,93%);
+	background: linear-gradient(to bottom,  hsl(60,14%,97%),  hsl(60,14%,84%));
+	border-color: hsl(60,14%,70%);
+}
+#moves button.type-Normal small {
+	color: hsl(60,14%,41%);
+}
+#moves button.type-Normal:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(60,14%,87%);
+	background: linear-gradient(to bottom,  hsl(60,14%,94%),  hsl(60,14%,77%));
+	border-color: hsl(60,14%,41%);
+}
+#moves button.type-Normal:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(60,14%,77%);
+	background: linear-gradient(to bottom,  hsl(60,14%,77%),  hsl(60,14%,83%));
+	border-color: hsl(60,14%,41%);
+}
+
+#moves button.type-Fighting {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(3,40%,93%);
+	background: linear-gradient(to bottom,  hsl(3,40%,97%),  hsl(3,40%,84%));
+	border-color: hsl(3,40%,70%);
+}
+#moves button.type-Fighting small {
+	color: hsl(3,40%,41%);
+}
+#moves button.type-Fighting:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(342, 16%, 87%);
+	background: linear-gradient(to bottom,  hsl(3,40%,94%),  hsl(3,40%,77%));
+	border-color: hsl(3,40%,41%);
+}
+#moves button.type-Fighting:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(342, 16%, 77%);
+	background: linear-gradient(to bottom,  hsl(3,40%,77%),  hsl(3,40%,83%));
+	border-color: hsl(3,40%,41%);
+}
+
+#moves button.type-Flying {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(255,20%,93%);
+	background: linear-gradient(to bottom,  hsl(255,20%,97%),  hsl(255,20%,84%));
+	border-color: hsl(255,20%,70%);
+}
+#moves button.type-Flying small {
+	color: hsl(255,20%,41%);
+}
+#moves button.type-Flying:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(255,20%,87%);
+	background: linear-gradient(to bottom,  hsl(255,20%,94%),  hsl(255,20%,77%));
+	border-color: hsl(255,20%,41%);
+}
+#moves button.type-Flying:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(255,20%,77%);
+	background: linear-gradient(to bottom,  hsl(255,20%,77%),  hsl(255,20%,83%));
+	border-color: hsl(255,20%,41%);
+}
+
+#moves button.type-Poison {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(300,30%,93%);
+	background: linear-gradient(to bottom,  hsl(300,30%,97%),  hsl(300,30%,84%));
+	border-color: hsl(300,30%,70%);
+}
+#moves button.type-Poison small {
+	color: hsl(300,30%,41%);
+}
+#moves button.type-Poison:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(300,30%,87%);
+	background: linear-gradient(to bottom,  hsl(300,30%,94%),  hsl(300,30%,77%));
+	border-color: hsl(300,30%,41%);
+}
+#moves button.type-Poison:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(300,30%,77%);
+	background: linear-gradient(to bottom,  hsl(300,30%,77%),  hsl(300,30%,83%));
+	border-color: hsl(300,30%,41%);
+}
+
+#moves button.type-Ground {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(44,27%,93%);
+	background: linear-gradient(to bottom,  hsl(44,27%,97%),  hsl(44,27%,84%));
+	border-color: hsl(44,27%,70%);
+}
+#moves button.type-Ground small {
+	color: hsl(44,27%,41%);
+}
+#moves button.type-Ground:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(44,27%,87%);
+	background: linear-gradient(to bottom,  hsl(44,27%,94%),  hsl(44,27%,77%));
+	border-color: hsl(44,27%,41%);
+}
+#moves button.type-Ground:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(44,27%,77%);
+	background: linear-gradient(to bottom,  hsl(44,27%,77%),  hsl(44,27%,83%));
+	border-color: hsl(44,27%,41%);
+}
+
+#moves button.type-Rock {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(49,35%,93%);
+	background: linear-gradient(to bottom,  hsl(49,35%,97%),  hsl(49,35%,84%));
+	border-color: hsl(49,35%,70%);
+}
+#moves button.type-Rock small {
+	color: hsl(49,35%,41%);
+}
+#moves button.type-Rock:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(49,35%,87%);
+	background: linear-gradient(to bottom,  hsl(49,35%,94%),  hsl(49,35%,77%));
+	border-color: hsl(49,35%,41%);
+}
+#moves button.type-Rock:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(49,35%,77%);
+	background: linear-gradient(to bottom,  hsl(49,35%,77%),  hsl(49,35%,83%));
+	border-color: hsl(49,35%,41%);
+}
+
+#moves button.type-Bug {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(66,42%,93%);
+	background: linear-gradient(to bottom,  hsl(66,42%,97%),  hsl(66,42%,84%));
+	border-color: hsl(66,42%,70%);
+}
+#moves button.type-Bug small {
+	color: hsl(66,42%,41%);
+}
+#moves button.type-Bug:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(66,42%,87%);
+	background: linear-gradient(to bottom,  hsl(66,42%,94%),  hsl(66,42%,77%));
+	border-color: hsl(66,42%,41%);
+}
+#moves button.type-Bug:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(66,42%,77%);
+	background: linear-gradient(to bottom,  hsl(66,42%,77%),  hsl(66,42%,83%));
+	border-color: hsl(66,42%,41%);
+}
+
+#moves button.type-Ghost {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(262,21%,93%);
+	background: linear-gradient(to bottom,  hsl(262,21%,97%),  hsl(262,21%,84%));
+	border-color: hsl(262,21%,70%);
+}
+#moves button.type-Ghost small {
+	color: hsl(262,21%,41%);
+}
+#moves button.type-Ghost:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(262,21%,87%);
+	background: linear-gradient(to bottom,  hsl(262,21%,94%),  hsl(262,21%,77%));
+	border-color: hsl(262,21%,41%);
+}
+#moves button.type-Ghost:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(262,21%,77%);
+	background: linear-gradient(to bottom,  hsl(262,21%,77%),  hsl(262,21%,83%));
+	border-color: hsl(262,21%,41%);
+}
+
+#moves button.type-Steel {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(240,6%,93%);
+	background: linear-gradient(to bottom,  hsl(240,6%,97%),  hsl(240,6%,84%));
+	border-color: hsl(240,6%,70%);
+}
+#moves button.type-Steel small {
+	color: hsl(240,6%,41%);
+}
+#moves button.type-Steel:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(240,6%,87%);
+	background: linear-gradient(to bottom,  hsl(240,6%,94%),  hsl(240,6%,77%));
+	border-color: hsl(240,6%,41%);
+}
+#moves button.type-Steel:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(240,6%,77%);
+	background: linear-gradient(to bottom,  hsl(240,6%,77%),  hsl(240,6%,83%));
+	border-color: hsl(240,6%,41%);
+}
+
+#moves button.type-Fire {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(25,40%,93%);
+	background: linear-gradient(to bottom,  hsl(25,40%,97%),  hsl(25,40%,84%));
+	border-color: hsl(25,40%,70%);
+}
+#moves button.type-Fire small {
+	color: hsl(25,40%,41%);
+}
+#moves button.type-Fire:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(25,40%,87%);
+	background: linear-gradient(to bottom,  hsl(25,40%,94%),  hsl(25,40%,77%));
+	border-color: hsl(25,40%,41%);
+}
+#moves button.type-Fire:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(25,40%,77%);
+	background: linear-gradient(to bottom,  hsl(25,40%,77%),  hsl(25,40%,83%));
+	border-color: hsl(25,40%,41%);
+}
+
+#moves button.type-Water {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(222,29%,93%);
+	background: linear-gradient(to bottom,  hsl(222,29%,97%),  hsl(222,29%,84%));
+	border-color: hsl(222,29%,70%);
+}
+#moves button.type-Water small {
+	color: hsl(222,29%,41%);
+}
+#moves button.type-Water:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(222,29%,87%);
+	background: linear-gradient(to bottom,  hsl(222,29%,94%),  hsl(222,29%,77%));
+	border-color: hsl(222,29%,41%);
+}
+#moves button.type-Water:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(222,29%,77%);
+	background: linear-gradient(to bottom,  hsl(222,29%,77%),  hsl(222,29%,83%));
+	border-color: hsl(222,29%,41%);
+}
+
+#moves button.type-Grass {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(100,30%,93%);
+	background: linear-gradient(to bottom,  hsl(100,30%,97%),  hsl(100,30%,84%));
+	border-color: hsl(100,30%,70%);
+}
+#moves button.type-Grass small {
+	color: hsl(100,30%,41%);
+}
+#moves button.type-Grass:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(100,30%,87%);
+	background: linear-gradient(to bottom,  hsl(100,30%,94%),  hsl(100,30%,77%));
+	border-color: hsl(100,30%,41%);
+}
+#moves button.type-Grass:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(100,30%,77%);
+	background: linear-gradient(to bottom,  hsl(100,30%,77%),  hsl(100,30%,83%));
+	border-color: hsl(100,30%,41%);
+}
+
+#moves button.type-Electric {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(48,41%,93%);
+	background: linear-gradient(to bottom,  hsl(48,41%,97%),  hsl(48,41%,84%));
+	border-color: hsl(48,41%,70%);
+}
+#moves button.type-Electric small {
+	color: hsl(48,41%,41%);
+}
+#moves button.type-Electric:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(48,41%,87%);
+	background: linear-gradient(to bottom,  hsl(48,41%,94%),  hsl(48,41%,77%));
+	border-color: hsl(48,41%,41%);
+}
+#moves button.type-Electric:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(48,41%,77%);
+	background: linear-gradient(to bottom,  hsl(48,41%,77%),  hsl(48,41%,83%));
+	border-color: hsl(48,41%,41%);
+}
+
+#moves button.type-Psychic {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(342,33%,93%);
+	background: linear-gradient(to bottom,  hsl(342,33%,97%),  hsl(342,33%,84%));
+	border-color: hsl(342,33%,70%);
+}
+#moves button.type-Psychic small {
+	color: hsl(342,33%,41%);
+}
+#moves button.type-Psychic:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(342,33%,87%);
+	background: linear-gradient(to bottom,  hsl(342,33%,94%),  hsl(342,33%,77%));
+	border-color: hsl(342,33%,41%);
+}
+#moves button.type-Psychic:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(342,33%,77%);
+	background: linear-gradient(to bottom,  hsl(342,33%,77%),  hsl(342,33%,83%));
+	border-color: hsl(342,33%,41%);
+}
+
+#moves button.type-Ice {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(180,15%,93%);
+	background: linear-gradient(to bottom,  hsl(180,15%,97%),  hsl(180,15%,84%));
+	border-color: hsl(180,15%,70%);
+}
+#moves button.type-Ice small {
+	color: hsl(180,15%,41%);
+}
+#moves button.type-Ice:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(180,15%,87%);
+	background: linear-gradient(to bottom,  hsl(180,15%,94%),  hsl(180,15%,77%));
+	border-color: hsl(180,15%,41%);
+}
+#moves button.type-Ice:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(180,15%,77%);
+	background: linear-gradient(to bottom,  hsl(180,15%,77%),  hsl(180,15%,83%));
+	border-color: hsl(180,15%,41%);
+}
+
+#moves button.type-Dragon {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(257,39%,93%);
+	background: linear-gradient(to bottom,  hsl(257,39%,97%),  hsl(257,39%,84%));
+	border-color: hsl(257,39%,70%);
+}
+#moves button.type-Dragon small {
+	color: hsl(257,39%,41%);
+}
+#moves button.type-Dragon:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(257,39%,87%);
+	background: linear-gradient(to bottom,  hsl(257,39%,94%),  hsl(257,39%,77%));
+	border-color: hsl(257,39%,41%);
+}
+#moves button.type-Dragon:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(257,39%,77%);
+	background: linear-gradient(to bottom,  hsl(257,39%,77%),  hsl(257,39%,83%));
+	border-color: hsl(257,39%,41%);
+}
+
+#moves button.type-Dark {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(24,18%,93%);
+	background: linear-gradient(to bottom,  hsl(24,18%,97%),  hsl(24,18%,84%));
+	border-color: hsl(24,18%,70%);
+}
+#moves button.type-Dark small {
+	color: hsl(24,18%,41%);
+}
+#moves button.type-Dark:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(24,18%,87%);
+	background: linear-gradient(to bottom,  hsl(24,18%,94%),  hsl(24,18%,77%));
+	border-color: hsl(24,18%,41%);
+}
+#moves button.type-Dark:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(24,18%,77%);
+	background: linear-gradient(to bottom,  hsl(24,18%,77%),  hsl(24,18%,83%));
+	border-color: hsl(24,18%,41%);
+}
+
+#moves button.type-Fairy {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(310,41%,93%);
+	background: linear-gradient(to bottom,  hsl(310,41%,97%),  hsl(310,41%,84%));
+	border-color: hsl(310,41%,70%);
+}
+#moves button.type-Fairy small {
+	color: hsl(310,41%,41%);
+}
+#moves button.type-Fairy:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(310,41%,87%);
+	background: linear-gradient(to bottom,  hsl(310,41%,94%),  hsl(310,41%,77%));
+	border-color: hsl(310,41%,41%);
+}
+#moves button.type-Fairy:active {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(310,41%,77%);
+	background: linear-gradient(to bottom,  hsl(310,41%,77%),  hsl(310,41%,83%));
+	border-color: hsl(310,41%,41%);
+}
+
+
+
+
+/* .status { display: none; } /* TODO */
 
 
 @media(min-height: 732px) {
