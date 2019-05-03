@@ -4,7 +4,7 @@ body {
   margin: 0px;
 }
 
-#display, #topbar {
+#display, #topbar, .sidebar {
 	background: #e3e3e3;
 	background: linear-gradient(to bottom,  #f6f6f6,  #e3e3e3);
 }
@@ -140,11 +140,15 @@ button, input[type="submit"], input[type="reset"] {
 
 
 #battle {
-  height: 250px;
+  height: 260px;
   margin-top: 2px;
   margin-left: 10px;
   margin-right: 10px;
-  border: 5px solid black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.sidebar.p2 {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -182,7 +186,19 @@ button, input[type="submit"], input[type="reset"] {
   font-size: 7pt;
   overflow-x: scroll;
   white-space: nowrap;
-  margin: 0px 2px;
+  padding: 0px 2px;
+}
+
+.sidebar.p2 {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.sidebar.p1 {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .sidebar.p2 .status {
@@ -195,8 +211,11 @@ button, input[type="submit"], input[type="reset"] {
 
 #screen { /* 361 x 214 */
   height: 212px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+
+  border-left: 4px solid black;
+  border-right: 4px solid black;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
 }
 
 #log {
@@ -211,9 +230,9 @@ button, input[type="submit"], input[type="reset"] {
 }
 
 #log {
-  border-left: 5px solid black;
-  border-right: 5px solid black;
-  border-bottom: 5px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .move {
