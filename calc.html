@@ -34,7 +34,7 @@
           <input class="gen visually-hidden" type="radio" name="gen" value="6" id="gen6" /><label class="btn btn-small btn-mid" for="gen6">X/Y</label>
           <input class="gen visually-hidden" type="radio" name="gen" value="7" id="gen7" /><label class="btn btn-small btn-right" for="gen7">S/M</label>
       </span>
-      <!-- <select id="format">
+      <select id="format">
           <option value="1">Random</option>
           <option value="2">AG</option>
           <option value="3">Ubers</option>
@@ -52,12 +52,12 @@
           <option value="15">1v1</option>
           <option value="16">CAP</option>
           <option value="17">BH</option>
-        </select> -->
-      <span aria-labelledby="selectNotationInstruction" role="radiogroup" title="Select the output notation.">
+        </select>
+      <!-- <span aria-labelledby="selectNotationInstruction" role="radiogroup" title="Select the output notation.">
           <span class="visually-hidden" id="selectNotationInstruction">Select the output notation.</span>
           <input class="notation visually-hidden" type="radio" name="notation" id="pixels" value="px" /><label class="btn btn-small btn-left" for="pixels">48px</label>
           <input class="notation visually-hidden" type="radio" name="notation" id="percentage" value="%"  checked="checked" /><label class="btn btn-small btn-right" for="percentage">100%</label>
-      </span>
+      </span> -->
     </div>
 
     <div aria-label="Calculation results" class="main-result-group" role="region">
@@ -82,10 +82,17 @@
       </div>
       <div class="selectors">
           <select class="set">
-              <option value="1">Tyranitar (OU Dragon Dance)</option>
+              <option value="1">Tyranitar (Dragon Dance)</option>
             </select>
-          <div class="ability"><label>Ability:</label><select><option value="1">Sand Stream</option></select></div>
-          <div class="item"><label>Item:</label><select><option value="1">Lum Berry</option></select></div>
+          <div class="format">
+            <label>Format:</label>
+            <select>
+              <option value="4" selected="selected">OU</option>
+              <option value="11">Monotype</option>
+            </select>
+          </div>
+          <div class="ability"><label>Ability:</label> <select><option value="1">Sand Stream</option></select></div>
+          <div class="item"><label>Item:</label> <select><option value="1">Lum Berry</option></select></div>
           <div class="stats">345 / 389 / 286 / 203 / 236 / 201</div>
         </div>
     </fieldset>
@@ -115,6 +122,54 @@
         </div>
     </div>
 
+    <!-- <fieldset class="p1 poke-info">
+        <legend>Pokémon / <b>Side</b></legend>
+        <div class="row">
+            <div aria-labelledby="selectSpikeInstruction" class="left" role="radiogroup" title="Are there Spikes on this side of the field?">
+                <input class="visually-hidden calc-trigger" type="radio" name="spikesL" value="0" id="spikesL0" checked="checked">
+                <label class="btn btn-xsmall btn-left" for="spikesL0">0</label>
+                <input class="visually-hidden calc-trigger" type="radio" name="spikesL" value="1" id="spikesL1">
+                <label class="btn btn-xsmall btn-mid" for="spikesL1">1</label>
+                <input class="visually-hidden calc-trigger" type="radio" name="spikesL" value="2" id="spikesL2">
+                <label class="btn btn-xsmall btn-mid" for="spikesL2">2</label>
+                <input class="visually-hidden calc-trigger" type="radio" name="spikesL" value="3" id="spikesL3">
+                <label class="btn btn-wide btn-right" for="spikesL3">3 Spikes</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left" title="Is this Pokémon protected by Reflect and/or Light Screen?">
+              <div hidden="" id="selectScreenInstruction">Is this Pokémon protected by Reflect and/or Light Screen?</div>
+              <input aria-describedby="selectScreenInstruction" class="visually-hidden calc-trigger" type="checkbox" id="reflectL">
+              <label class="btn btn-left" for="reflectL">Reflect</label>
+              <input aria-describedby="selectScreenInstruction" class="visually-hidden calc-trigger" type="checkbox" id="lightScreenL">
+              <label class="btn btn-xwide btn-right" for="lightScreenL">Light Screen</label>
+          </div>
+          <div class="left" title="Is this Pokémon protected?">
+              <div hidden="" id="selectProtectInstruction">Is this Pokémon protected?</div>
+              <input aria-describedby="selectProtectInstruction" class="visually-hidden calc-trigger" type="checkbox" id="protectL">
+              <label class="btn btn-wide" for="protectL">Protect</label>
+          </div>
+        </div>
+        <div class="row">
+            <div class="left" title="Has this Pokémon been affected by Leech Seed?">
+                <div hidden="" id="selectLeechSeedInstruction">Has this Pokémon been affected by Leech Seed?</div>
+                <input aria-describedby="selectLeechSeedInstruction" class="visually-hidden calc-trigger" type="checkbox" id="leechSeedL">
+                <label class="btn btn-wide" for="leechSeedL">Leech Seed</label>
+            </div>
+            <div class="left" title="Has this Pokémon been revealed with Foresight or Odor Sleuth?">
+                <div hidden="" id="selectRevealInstruction">Has this Pokémon been revealed with Foresight or Odor Sleuth?</div>
+                <input aria-describedby="selectRevealInstruction" class="visually-hidden calc-trigger" type="checkbox" id="foresightL">
+                <label class="btn btn-wide" for="foresightL">Foresight</label>
+            </div>
+            <div class="left" title="Has this Pokémon's power been boosted by an ally's Helping Hand?">
+                <div hidden="" id="selectHelpingHandInstruction">Has this Pokémon's power been boosted by an ally's Helping Hand?</div>
+                <input aria-describedby="selectHelpingHandInstruction" class="visually-hidden calc-trigger" type="checkbox" id="helpingHandL">
+                <label class="btn btn-xxwide" for="helpingHandL">Helping Hand</label>
+            </div>
+
+
+        </div>
+    </fieldset> -->
 
     <fieldset class="p1 poke-info">
         <legend><b>Pokémon</b> / Side</legend>
@@ -129,10 +184,17 @@
         </div>
         <div class="selectors">
         <select class="set">
-          <option value="1">Suicune (OU Substitute)</option>
+          <option value="1">Suicune (Substitute)</option>
         </select>
-        <div class="ability"><label>Ability:</label><select><option value="1">Pressure</option></select></div>
-        <div class="item"><label>Item:</label><select><option value="1">Leftovers</option></select></div>
+        <div class="format">
+          <label>Format:</label>
+          <select>
+            <option value="4" selected="selected">OU</option>
+            <option value="11">Monotype</option>
+          </select>
+        </div>
+        <div class="ability"><label>Ability:</label> <select><option value="1">Pressure</option></select></div>
+        <div class="item"><label>Item:</label> <select><option value="1">Leftovers</option></select></div>
         <div class="stats">404 / 167 / 266 / 290 / 266 / 222</div>
       </div>
     </fieldset>
@@ -162,8 +224,40 @@
 
     <fieldset class="poke-info">
         <legend><b>&gt; Field</b></legend>
-      </fieldset>
-
+    </fieldset>
+    <!-- <fieldset class="poke-info">
+        <legend><b>Field</b></legend>
+        <div class="row"  style="font-size: 11px">
+        <div>
+            <span class="visually-hidden" id="selectBattleFormatInstruction">Select the battle format.</span>
+            <input class="visually-hidden calc-trigger" type="radio" name="format" value="Singles" id="singles-format" checked="checked">
+            <label class="btn btn-left" for="singles-format">Singles</label>
+            <input class="visually-hidden calc-trigger" type="radio" name="format" value="Doubles" id="doubles-format">
+            <label class="btn btn-right" for="doubles-format">Doubles</label>
+        </div>
+        <div class="notationgroup" aria-labelledby="selectNotationInstruction" role="radiogroup" title="Select the output notation.">
+            <span class="visually-hidden" id="selectNotationInstruction">Select the output notation.</span>
+            <input class="notation visually-hidden" type="radio" name="notation" id="pixels" value="px" /><label class="btn btn-left" for="pixels">48px</label>
+            <input class="notation visually-hidden" type="radio" name="notation" id="percentage" value="%"  checked="checked" /><label class="btn btn-right" for="percentage">100%</label>
+        </div>
+      </div>
+      <div class="row">
+        <div title="Select the current weather condition.">
+            <input class="visually-hidden calc-trigger" type="radio" name="weather" value="" id="clear" checked="checked">
+            <label class="btn btn-small btn-left" for="clear">None</label>
+            <input class="visually-hidden calc-trigger" type="radio" name="weather" value="Sun" id="sun">
+            <label class="btn btn-small btn-mid" for="sun">Sun</label>
+            <input class="visually-hidden calc-trigger" type="radio" name="weather" value="Rain" id="rain">
+            <label class="btn btn-small btn-mid" for="rain">Rain</label>
+            <input class="visually-hidden calc-trigger" type="radio" name="weather" value="Sand" id="sand">
+            <label class="btn btn-small btn-mid" for="sand">Sand</label>
+            <input class="visually-hidden calc-trigger" type="radio" name="weather" value="Hail" id="hail">
+            <label class="btn btn-small btn-right" for="hail">Hail</label>
+        </div>
+        
+      </div>
+    </fieldset> -->
+ 
 
 
 
