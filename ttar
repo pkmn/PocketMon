@@ -1,0 +1,69 @@
+Tyranitar (F) @ Lum Berry  
+Ability: Sand Stream  
+EVs: 16 HP / 120 Atk / 120 Def / 252 Spe  
+Jolly Nature  
+- Dragon Dance  
+- Rock Slide  
+- Counter  
+- Earthquake  
+
+
+
+
+--------
+
+	name: string, (set)
+*species: string
+  (forme)
+*item: string
+*ability: string
+
+
+STATS
+	nature: string,
+  baseStats
+	ivs: StatsTable,
+	evs: StatsTable,
+  boosts
+*computedStats
+
+
+OVERFLOW
+ type1/type2
+ level: number,
+  gender: string,
+	shiny?: boolean,
+	happiness?: number,
+	pokeball?: string,
+	hpType?: string,
+
+MOVES
+  name
+  basePower
+  Type
+  category
+  crit
+  Z
+
+MOVE OTHER
+ move-hits
+ stat-drops
+ metronome
+
+FIELD
+  gameType Singles/Doubles
+  weather
+  terrain
+  gravity
+
+SIDE
+  Stealth Rock
+
+
+
+
+
+
+OTHER
+  status
+  hp
