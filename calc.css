@@ -450,8 +450,9 @@ legend {
 
 .pokemon { width: 96px; }
 .selectors {
+	margin-top: -5px;
 	width: 244px;
-	font-size: 12px;
+	font-size: 11px;
 }
 .poke-info .row {
 	font-size: 11px;
@@ -466,9 +467,8 @@ legend {
 	width: 4em;
 }
 .format { padding-top: 8px; }
-.ability { padding-top: 2px; }
-.item { padding-top: 2px; }
-.stats { padding-top: 8px; }
+.ability, .item, .spread { padding-top: 2px; }
+.stats { padding-top: 8px; font-size: 12px; }
 
 .ability select, .item select, .format select {
 	width: 10em;
@@ -482,3 +482,8 @@ table {
 .row div {
 	margin-left: 12px;
 }
+
+.spread {
+	font-size: 9px;
+}
+
