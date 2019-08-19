@@ -17,6 +17,24 @@ body {
   margin: 0px;
 }
 
+.poke-info input:not([type]), .poke-info input[type="text"], .poke-info span {
+    display: inline-block;
+    width: 2.5em;
+}
+.poke-info span.hpbar {
+	width: 100%;
+}
+.poke-info input[type="number"] {
+    display: inline-block;
+    width: 3em;
+}
+
+.hpcontainer {
+	clear: both;
+	position: relative;
+	top: -8px;
+}
+
 /* header */
 a img {
     border: 0;
@@ -352,9 +370,18 @@ button, input[type="submit"], input[type="reset"] {
 .small-text {
     font-size: 0.8em;
 }
-.hp { text-align: center; }
+.hpcontainer .hp { text-align: center; }
+.level {
+	font-size: 11px;
+	text-align: center;
+}
+.status {
+	margin-top: 4px;
+}
 
-
+#currentHpL1, #percent-hp  {
+	width: 2em;
+}
 
 
 .hpbar {
@@ -424,7 +451,7 @@ legend {
 .p2 legend { text-align: right; }
 
 .move-result-subgroup {
-	padding: 8px;
+	padding: 8px 8px 0 8px;
 	font-size: 11px;
 	/* display: none; */
 }
@@ -467,7 +494,8 @@ legend {
 	width: 4em;
 }
 .format { padding-top: 8px; }
-.ability, .item, .spread { padding-top: 2px; }
+.ability, .item, .spread, .level, .nature { padding-top: 2px; }
+.nature { padding-bottom: 4px; }
 .stats { padding-top: 8px; font-size: 12px; }
 
 .ability select, .item select, .format select {
@@ -475,9 +503,15 @@ legend {
 }
 
 table {
-	text-align: center;
-	width: 100%;
+	font-size: 11px;
 }
+th, td {
+    padding: 0;
+}
+th {
+    font-size: 0.8em;
+}
+
 
 .row div {
 	margin-left: 12px;
