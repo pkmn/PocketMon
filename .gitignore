@@ -1,3 +1,6 @@
+node_modules
+/build
+/*.log
+/wip/android
+/wip/resources
 .DS_Store
-wip/resources
-wip/android
