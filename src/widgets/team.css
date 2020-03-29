@@ -1,0 +1,50 @@
+.member.psn::before {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(164, 0, 154, 0.15); /* #A4009A */
+}
+.member.brn::before {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(238, 85, 51, 0.15); /* #EE5533 */
+}
+.member.par::before {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(154, 164, 0, 0.15); /* #9AA400 */
+}
+.member.slp::before {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(170, 119, 170, 0.15); /* #AA77AA */
+}
+.member.frz::before {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 154, 164, 0.15); /* #009AA4 */
+}

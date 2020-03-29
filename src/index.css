@@ -1,0 +1,85 @@
+/** THEME **/
+:root {
+  --bg-color: #fff;
+  --fg-color: #000;
+  --hard-color: #aaa;
+  --toggle-hover-color: #f5f5f5;
+  --toggle-checked-color: #e3e3e3;
+  --collapsible-bg-color: #fafafa;
+  --filter: invert(0%);
+}
+[data-theme="dark"] {
+  --bg-color: #000;
+  --fg-color: #ddd;
+  --hard-color: #555;
+  --toggle-hover-color: #1a1a1a;
+  --toggle-checked-color: #3c3c3c;
+  --collapsible-bg-color: #151515;
+  --filter: invert(87.5%);
+}
+
+/** BROWSER FIXES **/
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+body, html {
+  height: 100%; /* https://bugs.chromium.org/p/chromium/issues/detail?id=844848#c4 */
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  display: none;
+}
+img {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/** FONTS **/
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('/fonts/roboto-400.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/roboto-400.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto Italic'), local('Roboto-Italic'),
+       url('/fonts/roboto-400-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/roboto-400-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+       url('/fonts/roboto-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/roboto-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'),
+       url('/fonts/roboto-700-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/roboto-700-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}

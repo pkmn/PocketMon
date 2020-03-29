@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "lib": [
+      "dom",
+      "es6",
+      "es2018"
+    ],
+    "module": "commonjs",
+    "noEmit": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "removeComments": true,
+    "rootDir": "./src",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2015",
+    "tsBuildInfoFile": ".tsbuildinfo"
+  },
+  "exclude": ["dist", "wip"]
+}

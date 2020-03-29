@@ -1,0 +1,8 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import './src/index.css';
+
+@import './src/widgets/scene.css';
+@import './src/widgets/log.css';
+@import './src/widgets/moves.css';
+@import './src/widgets/team.css';
+@import './src/panels/battle.css';

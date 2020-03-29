@@ -1,0 +1,58 @@
+.status {
+	min-height: 10px;
+	font-size: 7pt;
+}
+.status img {
+	vertical-align: top;
+	top: -2px;
+	position: relative;
+}
+.status span {
+	padding: 0px 1px;
+	border: 1px solid #FF4400;
+	border-radius: 3px;
+}
+.status span.brn,
+.status span.psn,
+.status span.slp,
+.status span.par,
+.status span.frz {
+	padding: 1px 2px;
+	border: 0;
+	border-radius: 3px;
+}
+.status span.brn {
+	background: #EE5533;
+	color: #FFFFFF;
+}
+.status span.psn {
+	background: #A4009A;
+	color: #FFFFFF;
+}
+.status span.par {
+	background: #9AA400;
+	color: #FFFFFF;
+}
+.status span.slp {
+	background: #AA77AA;
+	color: #FFFFFF;
+}
+.status span.frz {
+	background: #009AA4;
+	color: #FFFFFF;
+}
+.status span.bad {
+	background: #FFE5E0;
+	color: #FF4400;
+	border-color: #FF4400;
+}
+.status span.good {
+	background: #E5FFE0;
+	color: #33AA00;
+	border-color: #33AA00;
+}
+.status span.neutral {
+	background: #F0F0F0;
+	color: #555555;
+	border-color: #555555;
+}

@@ -1,0 +1,102 @@
+.statbar {
+  position: absolute;
+	display: none;
+	width: 154px;
+	min-height: 40px;
+	padding: 2px 4px;
+}
+.statbar strong {
+	margin: 0 -15px;
+	display: block;
+	text-align: center;
+	color: #222222;
+	text-shadow: #FFFFFF 1px 1px 0, #FFFFFF 1px -1px 0, #FFFFFF -1px 1px 0, #FFFFFF -1px -1px 0;
+}
+.statbar strong small {
+	font-weight: normal;
+}
+.statbar .hpbar {
+	position: relative;
+	border: 1px solid #777777;
+	background: #FCFEFF;
+	padding: 1px;
+	height: 8px;
+	margin: 0 0 0 0;
+	width: 151px;
+	border-radius: 4px;
+}
+
+/* The declaration order of these hp* classes is significant. */
+
+.statbar .hpbar .hp {
+	height: 4px;
+	border-top: 2px solid #00dd60;
+	background: #00bb51;
+	border-bottom: 2px solid #007734;
+	border-right: 1px solid #007734;
+	border-radius: 3px;
+}
+.statbar .hpbar .hp-yellow {
+	border-top-color: #f8e379;
+	background-color: #f5d538;
+	border-bottom-color: #be9f0a;
+	border-right-color: #be9f0a;
+}
+.statbar .hpbar .hp-red {
+	border-top-color: #f37f67;
+	background-color: #ee4928;
+	border-bottom-color: #a3260d;
+	border-right-color: #a3260d;
+}
+
+/* The declaration order of these prevhp* classes is significant. */
+
+.statbar .hpbar .prevhp {
+	background: #BBEECC;
+	height: 8px;
+	border-radius: 3px;
+}
+.statbar .hpbar .prevhp-yellow {
+	background-color: #fcf4ca;
+}
+.statbar .hpbar .prevhp-red {
+	background-color: #facec5;
+}
+
+/****************/
+
+.statbar .hpbar .hptext {
+	position: absolute;
+	background: #777777;
+	color: #EEEEEE;
+	text-shadow: #000000 0 1px 0;
+	text-stroke: 1px #000000;
+	font-size: 9px;
+	width: 32px;
+	height: 12px;
+	top: -1px;
+	text-align: center;
+}
+.statbar .hpbar .hptextborder {
+	position: absolute;
+	background: transparent;
+	border-top: 1px solid #777777;
+	border-bottom: 1px solid #777777;
+	width: 4px;
+	top: -1px;
+	height: 10px;
+}
+.rstatbar .hpbar .hptext {
+	right: -32px;
+	border-radius: 0 4px 4px 0;
+}
+.lstatbar .hpbar .hptext {
+	left: -32px;
+	border-radius: 4px 0 0 4px;
+}
+.rstatbar .hpbar .hptextborder {
+	right: -3px;
+}
+.lstatbar .hpbar .hptextborder {
+	left: -3px;
+}
