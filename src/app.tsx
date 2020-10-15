@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from './../../logo.svg';
-import './App.css';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import {Button, Paper} from '@material-ui/core';
 
-function App() {
+import {Container, Typography, Button, Paper} from '@material-ui/core';
+
+import logo from './logo.svg';
+import './app.css';
+
+export function App() {
   return (
     <Container maxWidth="sm" className="App">
       <Paper>
@@ -23,5 +23,3 @@ function App() {
     </Container>
   );
 }
-
-export default App;

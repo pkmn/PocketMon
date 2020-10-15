@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {ThemeProvider} from '@material-ui/core/styles';
-import App from './Components/App/App';
-import theme from './theme';
-import reportWebVitals from './reportWebVitals';
+import {App} from './app';
+import theme from './utils/theme';
+import * as serviceWorkerRegistration from './utils/service-worker-registration';
+import {reportWebVitals} from './utils/analytics';
+
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
       <App />
     </ThemeProvider>
@@ -18,5 +19,8 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
+// https://cra.link/PWA
+serviceWorkerRegistration.unregister();
+
 // https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
+reportWebVitals(console.log /* sendToAnalytics */);
