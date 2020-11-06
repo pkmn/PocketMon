@@ -2,8 +2,8 @@
   <img alt="PocketMon" width="588" height="157" src="https://pkmn.cc/PocketMon.png" />
   <br />
   <br />
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode">
-    <img alt="License" src="https://img.shields.io/badge/License-CC%20BY--NC--SA-red.svg" />
+  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">
+    <img alt="License" src="https://img.shields.io/badge/License-CC%20BY--NC--ND-red.svg" />
   </a>
 </p>
 <hr />
@@ -17,14 +17,15 @@ UIs**.
 
 ## License
 
-PocketMon is licensed under the [Creative Commons BY-NC-SA 4.0
-license](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). This is atypical, CC BY-NC-SA
+PocketMon is licensed under the [Creative Commons BY-NC-ND 4.0
+license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode). This is atypical, CC BY-NC-ND
 is **not** an [open source license](https://opensource.org/licenses), **PocketMon code and
 derivatives may not be used for commercial purposes** (including, but not limited to, hosting with
-any sort of advertising). Please read the license carefully for full details.
+any sort of advertising) and **you may not distribute this code with any modifications**. Please
+read the license carefully for full details.
 
 <p align="center">
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode">
-    <img alt="CC BY-NC-SA 4.0" width="88" height="31" src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" />
+  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">
+    <img alt="CC BY-NC-ND 4.0" width="88" height="31" src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" />
   </a>
 </p>
