@@ -42,7 +42,7 @@ export default defineConfig({
     },
   },
   esbuild: {
-    jsxInject: 'import React from \'global\'',
+    jsxInject: 'import React from \'dom\'',
   },
   optimizeDeps: {
     esbuildOptions: {

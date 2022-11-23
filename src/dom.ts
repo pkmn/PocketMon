@@ -61,22 +61,15 @@ export const h = (
   attributes?: Attributes,
   ...children: Node[]
 ) => {
-  let element: HTMLElement | DocumentFragment;
-  if (typeof type === 'string') {
-    element = document.createElement(type);
-    addChildren(element, children);
-  } else if (isFragment(type)) {
-    element = document.createDocumentFragment();
-    addChildren(element, children);
-    return element;
-  } else {
-    element = type(attributes);
+  if (typeof type !== 'string') {
+    const element = isFragment(type) ? document.createDocumentFragment() : type(attributes);
     addChildren(element, children);
     return element;
   }
 
+  const element = document.createElement(type);
+  addChildren(element, children);
   if (!attributes) return element;
-
 
   for (let [name, value] of Object.entries(attributes)) {
     if (name === 'htmlFor') name = 'for';

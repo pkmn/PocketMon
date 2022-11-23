@@ -25,7 +25,7 @@
     "tsBuildInfoFile": ".tsbuildinfo",
     "useDefineForClassFields": true,
     "paths": {
-      "global": ["src/global"],
+      "dom": ["src/dom"],
     },
   }
 }
