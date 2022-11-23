@@ -1,16 +1,16 @@
 # User Interface
 
-| Generation |  Scene   | Sprites | Menu  | Font                                                             |
-| ---------- | :------: | :-----: | :---: | ---------------------------------------------------------------- |
-| RBY        | 160×144  |  56×56  | 16×16 | [Pokemon Classic](src/fonts/Pokemon%20Classic.ttf)               |
-| GSC        | 160×144  |  56×56  | 16×16 | [Pokemon Classic](src/fonts/Pokemon%20Classic.ttf)               |
-| ADV        | 240×160  |  64×64  | 32×32 | [Pokemon Emerald](src/fonts/Pokemon%20Emerald.ttf)               |
-| DPP        | 256×192  |  80×80  | 32×32 | [Pokemon Diamond Pearl](src/fonts/Pokemon%20Diamond%20Pearl.ttf) |
-| BW         | 256×192  |  96×96  | 32×32 | [Pokemon Black White](src/fonts/Pokemon%20Black%20White.ttf)     |
-| XY         | 400×240  |    -    | 40×30 | [Pokemon XY](src/fonts/Pokemon%20XY.ttf)                         |
-| SM         | 400×240  |    -    | 40×30 | **TODO**                                                         |
-| SS         | 1280×720 |    -    | 68×56 | **TODO**                                                         |
-| SV         | 1280×720 |    -    |   -   | **TODO**                                                         |
+| Generation |  Scene   | Sprites | Menu  | Font                                                                   |
+| ---------- | :------: | :-----: | :---: | ---------------------------------------------------------------------- |
+| RBY        | 160×144  |  56×56  | 16×16 | [Pokemon Classic](../public/fonts/Pokemon%20Classic.ttf)               |
+| GSC        | 160×144  |  56×56  | 16×16 | [Pokemon Classic](../public/fonts/Pokemon%20Classic.ttf)               |
+| ADV        | 240×160  |  64×64  | 32×32 | [Pokemon Emerald](../public/fonts/Pokemon%20Emerald.ttf)               |
+| DPP        | 256×192  |  80×80  | 32×32 | [Pokemon Diamond Pearl](../public/fonts/Pokemon%20Diamond%20Pearl.ttf) |
+| BW         | 256×192  |  96×96  | 32×32 | [Pokemon Black White](../public/fonts/Pokemon%20Black%20White.ttf)     |
+| XY         | 400×240  |    -    | 40×30 | [Pokemon XY](../public/fonts/Pokemon%20XY.ttf)                         |
+| SM         | 400×240  |    -    | 40×30 | **TODO**                                                               |
+| SS         | 1280×720 |    -    | 68×56 | **TODO**                                                               |
+| SV         | 1280×720 |    -    |   -   | **TODO**                                                               |
 
 | Model                  | Resolution |
 | ---------------------- | :--------: |
