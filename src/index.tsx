@@ -24,21 +24,42 @@ pref.addEventListener('change', e => {
 });
 setTheme(settings.theme === 'System' ? pref.matches ? 'Dark' : 'Light' : settings.theme);
 
-// Store
-const store = new Store();
-await store.set('message', 'hello');
-const message: string = await store.get('message');
+(async () => {
+  // Store
+  const store = new Store();
+  await store.set('message', `I like shorts! They're comfy and easy to wear!`);
+  const message: string = await store.get('message');
 
-// JSX
-const root = document.getElementById('root')!;
-// const App = (props: {message: string}) =>
-//   <div className="message"><p>{props.message}</p></div>;
+  // JSX
+  const Icon = ({num}: {num: number}) => {
+    const size = 32;
+    const url = 'https://pkmn.cc/sprites/gsicons-sheet.png';
+    const top = -Math.floor(num / 17) * size;
+    const left = -(num % 17) * size;
+    const style = {
+      display: 'inline-block',
+      width: size,
+      height: size,
+      background: `transparent url(${url}) no-repeat scroll ${left}px ${top}px`,
+      margin: `${(30 - size) / 2}px ${(40 - size) / 2}px`,
+    };
+    return <span className={"pixelated"} style={style}></span>;
+  };
 
-// root.appendChild(<App message={message} />);
+  const Message = ({value}: {value: string}) =>
+    <div className="message"><p>{value}</p></div>;
 
-const div = document.createElement('div');
-div.className = 'message';
-const p = document.createElement('p');
-p.appendChild(document.createTextNode(message));
-div.appendChild(p);
-root.appendChild(div);
+  const App = ({message}: {message: string}) =>
+    (<div id="app" style={{
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      alignItems: 'center',
+    }}>
+      <Message value={message} />
+      <Icon num={25 - 1} />
+    </div>);
+
+  const root = document.getElementById('root')!;
+  root.appendChild(<App message={message} /> as HTMLElement);
+})().catch(console.error);

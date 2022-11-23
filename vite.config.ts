@@ -1,6 +1,7 @@
 import {dirname} from 'path';
 import {fileURLToPath} from 'url';
 import {defineConfig} from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 const NODE_MODULES = '/node_modules/';
 
@@ -8,10 +9,11 @@ const root = dirname(fileURLToPath(import.meta.url));
 const parent = dirname(root);
 
 export default defineConfig({
+  plugins: [tsconfigPaths()],
   build: {
     chunkSizeWarningLimit: Infinity,
     cssCodeSplit: false,
-    minify: true,
+    minify: false, // TODO
     sourcemap: false,
     rollupOptions: {
       onwarn(warning, warn) {
@@ -38,6 +40,9 @@ export default defineConfig({
         },
       },
     },
+  },
+  esbuild: {
+    jsxInject: `import React from 'global'`
   },
   optimizeDeps: {
     esbuildOptions: {

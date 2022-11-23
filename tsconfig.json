@@ -9,6 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "isolatedModules": true,
+    "jsx": "react-jsx",
     "lib": ["ESNext", "DOM", "WebWorker"],
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -22,6 +23,9 @@
     "strict": true,
     "target": "ESNext",
     "tsBuildInfoFile": ".tsbuildinfo",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "paths": {
+      "global": ["src/global"],
+    },
   }
 }
