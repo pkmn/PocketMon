@@ -13,16 +13,16 @@ if (typeof window.orientation !== 'undefined') {
 }
 
 // Theme
-export type Theme = 'System' | 'Light' | 'Dark';
-const settings: {theme: Theme} = {theme: 'System'};
+export type Theme = 'system' | 'light' | 'dark';
+const settings: {theme: Theme} = {theme: 'system'};
 const setTheme = (theme: Theme) => {
-  document.documentElement.setAttribute('data-theme', theme.toLowerCase());
+  document.documentElement.setAttribute('data-theme', theme);
 };
 const pref = window.matchMedia('(prefers-color-scheme: dark)');
 pref.addEventListener('change', e => {
-  if (settings.theme === 'System') setTheme(e.matches ? 'Dark' : 'Light');
+  if (settings.theme === 'system') setTheme(e.matches ? 'dark' : 'light');
 });
-setTheme(settings.theme === 'System' ? pref.matches ? 'Dark' : 'Light' : settings.theme);
+setTheme(settings.theme === 'system' ? pref.matches ? 'dark' : 'light' : settings.theme);
 
 (async () => {
   // Store

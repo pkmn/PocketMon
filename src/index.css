@@ -1,12 +1,12 @@
 :root {
-  --bg-color: #fff;
-  --fg-color: #000;
+  --bg-color: #ffffff;
+  --fg-color: #000000;
   --filter: invert(0%);
 }
 
 [data-theme="dark"] {
-  --bg-color: #000;
-  --fg-color: #ddd;
+  --bg-color: ##121212;
+  --fg-color: #dddddd;
   --filter: invert(87.5%);
 }
 
