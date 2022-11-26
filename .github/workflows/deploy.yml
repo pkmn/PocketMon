@@ -2,6 +2,9 @@ name: Deploy
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
 permissions:
   contents: read
   pages: write
@@ -14,8 +17,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Pocketmon
         uses: actions/checkout@v3
+        with:
+          path: PocketMon
+      - name: Checkout pkmn/smogon
+        uses: actions/checkout@v3
+        with:
+          repository: pkmn/smogon
+          path: smogon
+      - name: Checkout pkmn/randbats
+        uses: actions/checkout@v3
+        with:
+          repository: pkmn/randbats
+          path: randbats
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -23,13 +38,17 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Install dependencies
-        run: npm install
+        run: npm -C PocketMon install
       - name: Test
-        run: npm test # runs build
+        run: npm -C PocketMon test # runs build
+      - name: Copy pkmn/smogon data
+        run: cp -a smogon/data PocketMon/dist
+      - name: Copy pkmn/randbats data
+        run: cp -a randbats/data/stats PocketMon/dist/data/random
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./dist
+          path: PocketMon/dist
   deploy:
     environment:
       name: github-pages
