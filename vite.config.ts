@@ -118,8 +118,11 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       if (node.attrs.some(attr => attr.name === 'name' && attr.value === 'theme-color')) {
         continue;
       }
+      // device- prefix is deprecated - itgalaxy/favicons#289
       tags.push(new HtmlTag(node.nodeName, node.attrs.reduce((acc, v) => {
-        acc[v.name] = v.value;
+        acc[v.name] = (node.nodeName === 'link' && v.name === 'media')
+          ? v.value.replaceAll(/device-(width|height)/g, (_, g) => g)
+          : v.value;
         return acc;
       }, {} as Record<string, string>)));
     }
