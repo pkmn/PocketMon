@@ -109,18 +109,12 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       const fileName = path.join(config.build.assetsDir, name);
       if (name === 'manifest.webmanifest') {
         const json = JSON.parse(contents) as {icons: ManifestIcon[]};
-        const icons: ManifestIcon[] = [{
+        json.icons = [{
           'src': '/favicon.svg',
           'sizes': 'any',
           'type': 'image/svg+xml',
           'purpose': 'any',
-        }];
-        for (const icon of json.icons) {
-          if (icon.sizes === '192x192' || icon.sizes === '512x512') {
-            icons.push({...icon, purpose: 'any maskable'});
-          }
-        }
-        json.icons = icons;
+        }, ...json.icons.filter(icon => icon.sizes === '192x192' || icon.sizes === '512x512')];
         contents = JSON.stringify(json, null, 2);
         // TODO: need to merge with vite-plugin-pwa output
         // manifest = contents;
