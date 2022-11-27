@@ -101,10 +101,9 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
     ctx.addWatchFile(logo);
     ctx.addWatchFile(preview);
 
-    const generated = await generateFavicons();
-    const resized = await generatePreview();
-
     const build = config.command === 'build';
+
+    const generated = await generateFavicons();
     for (let {name, contents} of generated.files) {
       const fileName = path.join(config.build.assetsDir, name);
       if (name === 'manifest.webmanifest') {
@@ -136,9 +135,10 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       if (build) ctx.emitFile({type: 'asset', fileName, source: contents});
     }
     {
+      const source = await generatePreview();
       const fileName = path.join(config.build.assetsDir, 'twitter.png');
-      if (build) ctx.emitFile({type: 'asset', fileName, source: resized});
-      resources.set(fileName, resized);
+      if (build) ctx.emitFile({type: 'asset', fileName, source});
+      resources.set(fileName, source);
     }
 
     tags.push(new HtmlTag('link', {rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg'}));
