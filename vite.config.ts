@@ -39,6 +39,15 @@ interface MetaPluginOptions {
   url: string;
 }
 
+// favicon-48x48.png - apparently not used by any browser
+// mstile-144x144.png - deprecated in favor of browserconfig.xml
+const SKIP_FILES = ['favicon-48x48.png', 'mstile-144x144.png'];
+
+// favicon.ico - implicit
+// apple-touch-icon - implicit, Apple will search for the approriate one
+// theme-color - replaced by a different theme color per color-scheme
+const SKIP_TAGS = [...SKIP_FILES, 'favicon.ico', 'apple-touch-icon', 'theme-color'];
+
 const MetaPlugin = (options: MetaPluginOptions): Plugin => {
   let config: ResolvedConfig;
   // let manifest: JsonObject;
@@ -54,7 +63,6 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       appName: options.name,
       appDescription: options.description,
       start_url: '/',
-      manifestMaskable: logo,
       icons: {
         android: true,
         appleIcon: true,
@@ -90,18 +98,32 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
     const resized = await generatePreview();
 
     const build = config.command === 'build';
-    for (const {name, contents} of generated.files) {
+    for (let {name, contents} of generated.files) {
       const fileName = path.join(config.build.assetsDir, name);
-      // TODO: need to merge with vite-plugin-pwa output
-      // if (name === 'manifest.webmanifest') {
-      //   manifest = JSON.parse(contents);
-      //   continue;
-      // }
+      if (name === 'manifest.webmanifest') {
+        const json = JSON.parse(contents) as {icons: {sizes: string}[]};
+        const icons: {sizes: string; purpose: string}[] = [];
+        for (const icon of json.icons) {
+          if (icon.sizes === '192x192' || icon.sizes === '512x512') {
+            icons.push({...icon, purpose: 'any maskable'});
+          }
+        }
+        json.icons = icons;
+        contents = JSON.stringify(json, null, 2);
+        // TODO: need to merge with vite-plugin-pwa output
+        // manifest = contents;
+        // continue;
+      }
       resources.set(fileName, contents);
       if (build) ctx.emitFile({type: 'asset', fileName, source: contents});
     }
     for (const {name, contents} of generated.images) {
       const fileName = path.join(config.build.assetsDir, name);
+      if (SKIP_FILES.includes(fileName) ||
+        (fileName.startsWith('android-chrome') &&
+        !(fileName.endsWith('192.png') || fileName.endsWith('512.png')))) {
+        continue;
+      }
       resources.set(fileName, contents);
       if (build) ctx.emitFile({type: 'asset', fileName, source: contents});
     }
@@ -112,13 +134,13 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
     }
 
     for (const tag of generated.html) {
+      if (SKIP_TAGS.some(skip => tag.includes(skip))) continue;
+
       const node = parseFragment(tag).childNodes[0] as unknown as {
         nodeName: string;
         attrs: [{name: string; value: string}];
       };
-      if (node.attrs.some(attr => attr.name === 'name' && attr.value === 'theme-color')) {
-        continue;
-      }
+
       // device- prefix is deprecated - itgalaxy/favicons#289
       tags.push(new HtmlTag(node.nodeName, node.attrs.reduce((acc, v) => {
         acc[v.name] = (node.nodeName === 'link' && v.name === 'media')
@@ -128,6 +150,8 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       }, {} as Record<string, string>)));
     }
 
+    tags.push(new HtmlTag('link',
+      {rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png'}));
     tags.push(new HtmlTag('meta', {name: 'description', content: options.description}));
     tags.push(new HtmlTag('meta', {name: 'color-scheme', content: 'light dark'}));
     tags.push(new HtmlTag('meta',
