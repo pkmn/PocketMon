@@ -39,6 +39,13 @@ interface MetaPluginOptions {
   url: string;
 }
 
+interface ManifestIcon {
+  src: string;
+  sizes: string;
+  type: string;
+  purpose: string;
+}
+
 // favicon-48x48.png - apparently not used by any browser
 // mstile-144x144.png - deprecated in favor of browserconfig.xml
 const SKIP_FILES = ['favicon-48x48.png', 'mstile-144x144.png'];
@@ -54,7 +61,7 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
   const resources = new Map<string, string | Buffer>;
   const tags: HtmlTag[] = [];
 
-  const logo = path.resolve(path.join('public', 'logo.svg'));
+  const logo = path.resolve(path.join('public', 'favicon.svg'));
   const preview = path.resolve(path.join('public', 'preview.png'));
 
   const generateFavicons = async () =>
@@ -101,8 +108,13 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
     for (let {name, contents} of generated.files) {
       const fileName = path.join(config.build.assetsDir, name);
       if (name === 'manifest.webmanifest') {
-        const json = JSON.parse(contents) as {icons: {sizes: string}[]};
-        const icons: {sizes: string; purpose: string}[] = [];
+        const json = JSON.parse(contents) as {icons: ManifestIcon[]};
+        const icons: ManifestIcon[] = [{
+          'src': '/favicon.svg',
+          'sizes': 'any',
+          'type': 'image/svg+xml',
+          'purpose': 'any',
+        }];
         for (const icon of json.icons) {
           if (icon.sizes === '192x192' || icon.sizes === '512x512') {
             icons.push({...icon, purpose: 'any maskable'});
@@ -133,6 +145,7 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       resources.set(fileName, resized);
     }
 
+    tags.push(new HtmlTag('link', {rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg'}));
     for (const tag of generated.html) {
       if (SKIP_TAGS.some(skip => tag.includes(skip))) continue;
 
@@ -149,7 +162,6 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
         return acc;
       }, {} as Record<string, string>)));
     }
-
     tags.push(new HtmlTag('link',
       {rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png'}));
     tags.push(new HtmlTag('meta', {name: 'description', content: options.description}));
