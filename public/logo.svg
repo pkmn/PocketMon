@@ -1,2 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg enable-background="new 0 0 864 864" version="1.1" viewBox="0 0 864 864" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><metadata><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title/></cc:Work></rdf:RDF></metadata><circle cx="447.18" cy="447.64" r="348" clip-rule="evenodd" fill-rule="evenodd"/><g clip-rule="evenodd" fill="#fff" fill-rule="evenodd"><path d="m573.71 473.54c-11.995 58.904-64.089 103.23-126.54 103.23-62.447 0-114.54-44.327-126.54-103.23h-179.47c13.155 157.48 145.12 281.2 306.01 281.2 160.88 0 292.86-123.72 306.01-281.2h-179.48z"/><path d="m447.18 357.28c-49.904 0-90.36 40.456-90.36 90.362 0 49.904 40.456 90.361 90.36 90.361 49.906 0 90.361-40.457 90.361-90.361 0-49.906-40.455-90.362-90.361-90.362z"/></g><path d="m447.18 318.5c62.446 0 114.54 44.327 126.54 103.23h179.48c-13.155-157.48-145.13-281.2-306.01-281.2-160.88 0-292.85 123.72-306.01 281.2h179.47c11.995-58.905 64.087-103.23 126.54-103.23z" clip-rule="evenodd" fill="#ED1C24" fill-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 864 864" width="864" height="864" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="432" cy="432" r="348" clip-rule="evenodd" fill-rule="evenodd"/>
+  <g clip-rule="evenodd" fill="#fff" fill-rule="evenodd" transform="matrix(1, 0, 0, 1, -15.179993, -15.640015)">
+    <path d="m573.71 473.54c-11.995 58.904-64.089 103.23-126.54 103.23-62.447 0-114.54-44.327-126.54-103.23h-179.47c13.155 157.48 145.12 281.2 306.01 281.2 160.88 0 292.86-123.72 306.01-281.2h-179.48z"/>
+    <path d="m447.18 357.28c-49.904 0-90.36 40.456-90.36 90.362 0 49.904 40.456 90.361 90.36 90.361 49.906 0 90.361-40.457 90.361-90.361 0-49.906-40.455-90.362-90.361-90.362z"/>
+  </g>
+  <path d="M 432 302.86 C 494.446 302.86 546.54 347.187 558.54 406.09 L 738.02 406.09 C 724.865 248.61 592.89 124.89 432.01 124.89 C 271.13 124.89 139.16 248.61 126 406.09 L 305.47 406.09 C 317.465 347.185 369.557 302.86 432.01 302.86 L 432 302.86 Z" clip-rule="evenodd" fill="#ED1C24" fill-rule="evenodd"/>
+</svg>

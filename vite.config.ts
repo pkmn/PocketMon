@@ -54,6 +54,7 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       appName: options.name,
       appDescription: options.description,
       start_url: '/',
+      manifestMaskable: logo,
       icons: {
         android: true,
         appleIcon: true,
