@@ -1,7 +1,9 @@
 import {Store} from './store';
 
-// Orientation
+// Hack to hide the browser's URL bar
 setTimeout(() => window.scrollTo(0, 1), 0);
+
+// Orientation
 if (typeof window.orientation !== 'undefined') {
   // Re-render on orientation change: https://stackoverflow.com/questions/7919172
   window.addEventListener('orientationchange', () => {
