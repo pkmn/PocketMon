@@ -51,7 +51,7 @@ interface ManifestIcon {
 const SKIP_FILES = ['favicon-48x48.png', 'mstile-144x144.png'];
 
 // favicon.ico - implicit
-// apple-touch-icon - implicit, Apple will search for the approriate one
+// apple-touch-icon - implicit, Apple will search for the appropriate one
 // theme-color - replaced by a different theme color per color-scheme
 const SKIP_TAGS = [...SKIP_FILES, 'favicon.ico', 'apple-touch-icon', 'theme-color'];
 
