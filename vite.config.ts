@@ -141,6 +141,9 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       resources.set(fileName, source);
     }
 
+    tags.push(new HtmlTag('meta', {charset: 'utf-8'}));
+    tags.push(new HtmlTag('meta',
+      {name: 'viewport', content: 'minimum-scale=1, initial-scale=1, width=device-width'}));
     tags.push(new HtmlTag('link', {rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg'}));
     for (const tag of generated.html) {
       if (SKIP_TAGS.some(skip => tag.includes(skip))) continue;
