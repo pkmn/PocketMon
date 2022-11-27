@@ -109,6 +109,8 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       const fileName = path.join(config.build.assetsDir, name);
       if (name === 'manifest.webmanifest') {
         const json = JSON.parse(contents) as {icons: ManifestIcon[]};
+        // favicons' default orientation "any" doesn't seem to respect orientation lock
+        delete (json as any).orientation;
         json.icons = [{
           'src': '/favicon.svg',
           'sizes': 'any',
