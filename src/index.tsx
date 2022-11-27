@@ -1,3 +1,4 @@
+import {Settings, Theme} from './settings';
 import {Store} from './store';
 
 // Hack to hide the browser's URL bar
@@ -15,16 +16,16 @@ if (typeof window.orientation !== 'undefined') {
 }
 
 // Theme
-export type Theme = 'system' | 'light' | 'dark';
-const settings: {theme: Theme} = {theme: 'system'};
 const setTheme = (theme: Theme) => {
   document.documentElement.setAttribute('data-theme', theme);
 };
 const pref = window.matchMedia('(prefers-color-scheme: dark)');
 pref.addEventListener('change', e => {
-  if (settings.theme === 'system') setTheme(e.matches ? 'dark' : 'light');
+  if (Settings.get('theme') === 'system') setTheme(e.matches ? 'dark' : 'light');
 });
-setTheme(settings.theme === 'system' ? pref.matches ? 'dark' : 'light' : settings.theme);
+setTheme(Settings.get('theme') === 'system'
+  ? pref.matches ? 'dark' : 'light'
+  : Settings.get('theme'));
 
 (async () => {
   // Store
