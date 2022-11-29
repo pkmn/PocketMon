@@ -1,5 +1,5 @@
 {
-  "include": ["src", "vite.config.ts"],
+  "include": ["src", "test", "vite.config.ts"],
   "compilerOptions": {
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -25,7 +25,7 @@
     "tsBuildInfoFile": ".tsbuildinfo",
     "useDefineForClassFields": true,
     "paths": {
-      "dom": ["src/dom"],
-    },
+      "dom": ["src/dom"]
+    }
   }
 }

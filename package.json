@@ -9,15 +9,18 @@
     "@types/sharp": "^0.31.0",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.44.0",
+    "es-module-lexer": "^1.1.0",
     "eslint": "^8.27.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^27.1.5",
     "favicons": "^7.0.2",
+    "jest": "^29.3.1",
     "parse5": "^7.1.2",
     "sharp": "^0.31.2",
     "typescript": "^4.8.4",
     "vite": "^3.2.4",
-    "vite-tsconfig-paths": "^3.6.0"
+    "vite-tsconfig-paths": "^3.6.0",
+    "vitest": "^0.25.3"
   },
   "scripts": {
     "lint": "eslint --cache . --ext ts,tsx",
@@ -26,7 +29,7 @@
     "start": "vite",
     "build": "npm run compile && vite build",
     "preview": "vite preview",
-    "test": "true",
+    "test": "vitest run",
     "pretest": "npm run build",
     "posttest": "npm run lint"
   },
