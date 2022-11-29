@@ -223,11 +223,10 @@ const name = (file: string, chunk: string) => {
   if (chunk !== 'pkmn.sim') return chunk;
   if (file.includes('learnsets')) return `${chunk}.learnsets`;
   if (file.includes('text')) return `${chunk}.text`;
-  if (file.includes('data')) {
-    const m = /gen(\d)/.exec(file);
-    return `${chunk}.gen${m ? m[1] : 9}`;
-  }
-  return chunk;
+  if (file.includes('formats')) return `${chunk}.formats`;
+  if (!file.includes('data')) return chunk;
+  const m = /gen(\d)/.exec(file);
+  return `${chunk}.${!m ? 'current.gen' : +m[1] <= 4 ? 'old.gens' : 'new.gens'}`;
 };
 
 export default defineConfig({
