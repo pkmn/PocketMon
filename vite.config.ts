@@ -218,6 +218,18 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
   };
 };
 
+const name = (file: string, chunk: string) => {
+  if (chunk.startsWith('ps.')) chunk = `pkmn.${chunk.slice(3)}`;
+  if (chunk !== 'pkmn.sim') return chunk;
+  if (file.includes('learnsets')) return `${chunk}.learnsets`;
+  if (file.includes('text')) return `${chunk}.text`;
+  if (file.includes('data')) {
+    const m = /gen(\d)/.exec(file);
+    return `${chunk}.gen${m ? m[1] : 9}`;
+  }
+  return chunk;
+};
+
 export default defineConfig({
   clearScreen: false,
   plugins: [
@@ -246,7 +258,7 @@ export default defineConfig({
             id = id.slice(index + NODE_MODULES.length);
             index = id.indexOf('/');
             return (id.startsWith('@')
-              ? `${id.slice(1, index)}.${id.slice(index + 1, id.indexOf('/', index + 1))}`
+              ? name(id, `${id.slice(1, index)}.${id.slice(index + 1, id.indexOf('/', index + 1))}`)
               : id.slice(0, index));
           }
           if (!(id.startsWith(root) || id.startsWith('vite'))) {
@@ -255,7 +267,7 @@ export default defineConfig({
             index = id.indexOf('/');
             const dir = id.slice(0, index);
             const subdir = id.slice(index + 1, id.indexOf('/', index + 1));
-            return ['build', 'dist'].includes(subdir) ? dir : `${dir}.${subdir}`;
+            return ['build', 'dist'].includes(subdir) ? dir : name(id, `${dir}.${subdir}`);
           }
         },
       },
