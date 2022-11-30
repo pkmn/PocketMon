@@ -2,7 +2,13 @@
 
 TODO
 
-## Assets
+## Data
+
+> "There are only two hard things in Computer Science: cache invalidation and naming things." — Phil
+> Karlton
+
+PocketMon relies on a large number of assets and needs to take care to balance latency,
+bandwidth/disk usage, freshness, and offline support.
 
 PocketMon uses the following assets from https://data.pkmn.cc:
 
@@ -50,15 +56,17 @@ which has separate Pokédex sprites for its teambuilder.
   - everything requires @pkmn/sim for data...
   - battle requires @pkmn/{sim,protocol,epoke,predictor,gmd,view,spread,engine}
 
-## Database
+### Storage
 
-### Local Storage
+### [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 - preferences
 - application state
 
-### IndexDB
+### [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
 
 - asset status (/ cache?)
 - teams
 - battle history
+
+### [Cache](https://developer.mozilla.org/en-US/docs/Web/API/Cache)
