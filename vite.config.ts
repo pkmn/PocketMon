@@ -221,12 +221,17 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
 const name = (file: string, chunk: string) => {
   if (chunk.startsWith('ps.')) chunk = `pkmn.${chunk.slice(3)}`;
   if (chunk !== 'pkmn.sim') return chunk;
+  // Learnsets are very large and change infrequently
   if (file.includes('learnsets')) return `${chunk}.learnsets`;
+  // Descriptions usually all get changed together when Marty updates them
   if (file.includes('text')) return `${chunk}.text`;
-  if (file.includes('formats') && !file.includes('dex')) return `${chunk}.formats`;
+  // config/formats and data/formats-data change daily if not weekly as tier updates occur
+  if (file.includes('data/formats') || file.includes('config/formats')) return `${chunk}.formats`;
+  // The sim/ root directory - core Dex/Battle code
   if (!file.includes('data') || file.includes('dex-data')) return chunk;
+  // Divide the old gens into approximately equal-sized chunks
   const m = /gen(\d)/.exec(file);
-  return `${chunk}.${!m ? 'current.gen' : +m[1] <= 4 ? 'old.gens' : 'new.gens'}`;
+  return `${chunk}.${!m ? 'current.gen' : +m[1] <= 5 ? 'classic.gens' : 'modern.gens'}`;
 };
 
 export default defineConfig({

@@ -11,20 +11,20 @@ const CHUNKS: {[chunk: string]: string[]} = {
   'index': [],
   // 'index': [
   //   'pkmn.sim', 'pkmn.sim.current.gen', 'pkmn.sim.formats', 'pkmn.sim.learnsets',
-  //   'pkmn.sim.old.gens', 'pkmn.sim.new.gens', 'pkmn.sim.text',
+  //   'pkmn.sim.classic.gens', 'pkmn.sim.modern.gens', 'pkmn.sim.text',
   // ],
   // 'pkmn.sets': [],
   // 'pkmn.streams': [],
   // 'pkmn.sim': [
-  //   'pkmn.sim.current.gen', 'pkmn.sim.formats', 'pkmn.sim.old.gens',
-  //   'pkmn.sim.new.gens', 'pkmn.sim.text',
+  //   'pkmn.sim.current.gen', 'pkmn.sim.formats', 'pkmn.sim.learnsets',
+  //   'pkmn.sim.classic.gens', 'pkmn.sim.modern.gens', 'pkmn.sim.text',
   // ],
   // 'pkmn.sim.formats': [],
   // 'pkmn.sim.learnsets': [],
   // 'pkmn.sim.text': [],
-  // 'pkmn.sim.current.gen': ['pkmn.sim.formats', 'pkmn.sim.learnsets'],
-  // 'pkmn.sim.old.gens': ['pkmn.sim.formats', 'pkmn.sim.learnsets'],
-  // 'pkmn.sim.new.gens': ['pkmn.sim.formats', 'pkmn.sim.learnsets'],
+  // 'pkmn.sim.current.gen': [],
+  // 'pkmn.sim.classic.gens': [],
+  // 'pkmn.sim.modern.gens': [],
 };
 
 describe('chunks', async () => {
