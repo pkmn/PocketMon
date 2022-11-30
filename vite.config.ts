@@ -97,7 +97,7 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
     }).toBuffer();
   };
 
-  const rebuildFavicons = async (ctx: PluginContext) => {
+  const generate = async (ctx: PluginContext) => {
     ctx.addWatchFile(logo);
     ctx.addWatchFile(preview);
 
@@ -200,7 +200,7 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       config = resolved;
     },
     async buildStart() {
-      await rebuildFavicons(this);
+      await generate(this);
     },
     transformIndexHtml() {
       return tags;
@@ -218,20 +218,23 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
   };
 };
 
-const name = (file: string, chunk: string) => {
-  if (chunk.startsWith('ps.')) chunk = `pkmn.${chunk.slice(3)}`;
-  if (chunk !== 'pkmn.sim') return chunk;
+const chunk = (file: string, base: string) => {
+  if (base.startsWith('ps.')) base = `pkmn.${base.slice(3)}`;
+  if (base !== 'pkmn.sim') return base;
   // Learnsets are very large and change infrequently
-  if (file.includes('learnsets')) return `${chunk}.learnsets`;
+  if (file.includes('learnsets')) return `${base}.learnsets`;
+  // Legality information changes more frequently though is still relatively stable
+  if (file.includes('data/legality')) return `${base}.legality`;
+  if (!file.includes('data') || file.includes('dex-data')) return base;
   // Descriptions usually all get changed together when Marty updates them
-  if (file.includes('text')) return `${chunk}.text`;
+  if (file.includes('text')) return `${base}.text`;
   // config/formats and data/formats-data change daily if not weekly as tier updates occur
-  if (file.includes('data/formats') || file.includes('config/formats')) return `${chunk}.formats`;
+  if (file.includes('data/formats') || file.includes('config/formats')) return `${base}.formats`;
   // The sim/ root directory - core Dex/Battle code
-  if (!file.includes('data') || file.includes('dex-data')) return chunk;
+  if (!file.includes('data') || file.includes('dex-data')) return base;
   // Divide the old gens into approximately equal-sized chunks
   const m = /gen(\d)/.exec(file);
-  return `${chunk}.${!m ? 'current.gen' : +m[1] <= 5 ? 'classic.gens' : 'modern.gens'}`;
+  return `${base}.${!m ? 'current.gen' : +m[1] <= 5 ? 'classic.gens' : 'modern.gens'}`;
 };
 
 export default defineConfig({
@@ -261,9 +264,9 @@ export default defineConfig({
           if (index > 1) {
             id = id.slice(index + NODE_MODULES.length);
             index = id.indexOf('/');
-            return (id.startsWith('@')
-              ? name(id, `${id.slice(1, index)}.${id.slice(index + 1, id.indexOf('/', index + 1))}`)
-              : id.slice(0, index));
+            if (!id.startsWith('@')) return id.slice(0, index);
+            const namespace = id.slice(1, index);
+            return chunk(id, `${namespace}.${id.slice(index + 1, id.indexOf('/', index + 1))}`);
           }
           if (!(id.startsWith(root) || id.startsWith('vite'))) {
             if (!id.startsWith(parent)) throw new Error(`Unexpected module ${id}`);
@@ -271,7 +274,7 @@ export default defineConfig({
             index = id.indexOf('/');
             const dir = id.slice(0, index);
             const subdir = id.slice(index + 1, id.indexOf('/', index + 1));
-            return ['build', 'dist'].includes(subdir) ? dir : name(id, `${dir}.${subdir}`);
+            return ['build', 'dist'].includes(subdir) ? dir : chunk(id, `${dir}.${subdir}`);
           }
         },
       },
