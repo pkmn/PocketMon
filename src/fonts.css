@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'Pokemon Classic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Pokemon-Classic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pokemon Emerald';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Pokemon-Emerald.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pokemon Diamond Pearl';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Pokemon-Diamond-Pearl.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pokemon Black White';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Pokemon-Black-White.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pokemon XY';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Pokemon-XY.ttf') format('truetype');
+}
