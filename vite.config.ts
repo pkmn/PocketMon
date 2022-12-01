@@ -276,6 +276,7 @@ export default defineConfig({
             const subdir = id.slice(index + 1, id.indexOf('/', index + 1));
             return ['build', 'dist'].includes(subdir) ? dir : chunk(id, `${dir}.${subdir}`);
           }
+          return 'index';
         },
       },
     },
