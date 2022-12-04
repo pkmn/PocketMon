@@ -238,7 +238,6 @@ const chunk = (file: string, base: string) => {
 };
 
 export default defineConfig({
-  clearScreen: false,
   plugins: [
     TSConfigPathsPlugin(),
     MetaPlugin({
