@@ -60,6 +60,10 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
   // let manifest: JsonObject;
   const resources = new Map<string, string | Buffer>;
   const tags: HtmlTag[] = [];
+  tags.push(new HtmlTag('meta', {charset: 'utf-8'}));
+  tags.push(new HtmlTag('meta',
+    {name: 'viewport', content: 'minimum-scale=1, initial-scale=1, width=device-width'}));
+  tags.push(new HtmlTag('link', {rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg'}));
 
   const logo = path.resolve(path.join('public', 'favicon.svg'));
   const preview = path.resolve(path.join('public', 'preview.png'));
@@ -141,10 +145,6 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       resources.set(fileName, source);
     }
 
-    tags.push(new HtmlTag('meta', {charset: 'utf-8'}));
-    tags.push(new HtmlTag('meta',
-      {name: 'viewport', content: 'minimum-scale=1, initial-scale=1, width=device-width'}));
-    tags.push(new HtmlTag('link', {rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg'}));
     for (const tag of generated.html) {
       if (SKIP_TAGS.some(skip => tag.includes(skip))) continue;
 
@@ -200,7 +200,7 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
       config = resolved;
     },
     async buildStart() {
-      await generate(this);
+      if (config.root === root) await generate(this);
     },
     transformIndexHtml() {
       return tags;

@@ -30,6 +30,7 @@
     "build": "npm run compile && vite build",
     "preview": "vite preview",
     "test": "vitest run",
+    "scene": "vite test/scene",
     "pretest": "npm run build",
     "posttest": "npm run lint"
   },
