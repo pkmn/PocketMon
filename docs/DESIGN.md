@@ -61,12 +61,26 @@ which has separate Pokédex sprites for its teambuilder.
 ### [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 - preferences
-- application state
+  - color scheme
+  - which data to sync
+  - what UI mode to use (hardcore mode, PS mode, inline calcs and EPOke mode)
+- application state (return where left off)
 
 ### [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
 
-- asset status (/ cache?)
+- cached resources (time expired, size)
 - teams
 - battle history
 
 ### [Cache](https://developer.mozilla.org/en-US/docs/Web/API/Cache)
+
+"cache first, timed revalidate" = serve from cache, redownload only after time has elapsed. for
+each resource, want to create and use time
+
+- icons (cache first, timed revalidate)
+- fonts (cache first, timed revalidate)
+- index.html (precache)
+- JS/css hashed files (precache)
+- data.pkmn.cc
+  - index: network-first
+  - resources: cache-first (update in background if index updates)
