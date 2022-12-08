@@ -27,8 +27,12 @@
   border-width: var(--border);
   border-style: double;
 }
-.scene.gen2 {
+.gen2 .scene {
   border-radius: var(--border);
+}
+.gen3 .scene {
+  border-style: solid;
+  border-width: 1px;
 }
 
 .mock {
@@ -42,6 +46,9 @@ span {
   font-family: 'Pokemon Classic';
   text-transform: uppercase;
   font-size: 28px;
+}
+.gen3 span {
+  font-family: 'Pokemon Emerald';
 }
 
 span.p1 {
