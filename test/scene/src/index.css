@@ -1,2 +1,71 @@
 @import '../../../src/global.css';
 @import '../../../src/fonts.css';
+
+:root {
+  --base: 1;
+  --scene-width: calc(var(--base) * 320px);
+  --scene-height: calc(var(--base) * 180px);
+  --border: calc(var(--base) * 5px);
+}
+@media (min-width: 640px) {
+  :root {
+    --base: 2;
+  }
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.scene {
+  position: relative;
+  width: var(--scene-width);
+  height: var(--scene-height);
+  border-width: var(--border);
+  border-style: double;
+}
+.scene.gen2 {
+  border-radius: var(--border);
+}
+
+.mock {
+  position: relative;
+  width: calc(var(--scene-width) - 2 * var(--border));
+  image-rendering: pixelated;
+  opacity: 0.1;
+}
+
+span {
+  font-family: 'Pokemon Classic';
+  text-transform: uppercase;
+  font-size: 28px;
+}
+
+span.p1 {
+  position: absolute;
+  bottom: 90px;
+  right: 26px;
+}
+
+span.p2 {
+  position: absolute;
+  top: -13px;
+  left: 29px;
+}
+
+img.p1 {
+  position: absolute;
+  bottom: -127px;
+  left: -47px;
+  width: calc(4 * 96px);
+}
+
+img.p2 {
+  position: absolute;
+  top: -64px;
+  right: -32px;
+  width: calc(4 * 96px);
+}
