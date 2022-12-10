@@ -29,15 +29,30 @@ const hash = (dir: string, file: string) =>
 const read = (dir: string, json: string) =>
   JSON.parse(fs.readFileSync(path.join(dir, json), 'utf8'));
 
+const USAGE = /^gen\d(ubers|(o|u|r|n|p)u)$/;
+const NINTENDO = /nintendo|vgc|battle(spot|stadium)/;
+const categorize = (format: string) =>
+  USAGE.test(format) ? 'usage'
+  : NINTENDO.test(format) ? 'nintendo'
+  : format.includes('nationaldex') ? 'natdex'
+  : 'other';
+
+const sort = (obj: {[category: string]: {[formatid: string]: unknown}}) =>
+  Object.fromEntries(Object.entries(obj).map(([k, v]) =>
+    [k, Object.fromEntries(Object.entries(v).sort(([a], [b]) => +b.charAt(3) - +a.charAt(3)))]));
+
 const formats = hash(smogon, 'data/formats/index.json');
 
-const data: {[formatid: string]: [Metadata?, Metadata?, Metadata?]} = {};
+const data: {[category: string]: {[formatid: string]: [Metadata?, Metadata?, Metadata?]}} = {};
 for (const [i, type] of (['stats', 'sets', 'analyses'] as const).entries()) {
   for (const [file, sizes] of Object.entries(read(smogon, `data/${type}/index.json`))) {
     const format = file.slice(0, -5);
     if (format.length < 5) continue;
-    data[format] = data[format] || [null, null, null];
-    data[format][i] = [hash(smogon, `data/${type}/${file}`), ...(sizes as [number, number])];
+    const category = categorize(format);
+    data[category] = data[category] || {};
+    data[category][format] = data[category][format] || [null, null, null];
+    data[category][format][i] =
+      [hash(smogon, `data/${type}/${file}`), ...(sizes as [number, number])];
   }
 }
 
@@ -47,4 +62,4 @@ for (const [file, sizes] of Object.entries(read(randbats, 'data/stats/index.json
   random[format] = [hash(randbats, `data/stats/${file}`), ...(sizes as [number, number])];
 }
 
-console.log(stringify({formats, data, random}, {maxLength: 200}));
+console.log(stringify({formats, data: sort({...data, random})}, {maxLength: 200}));
