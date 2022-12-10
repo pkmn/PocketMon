@@ -33,7 +33,7 @@ import * as child_process from 'child_process';
     diffs: {[version: string]: {[path: string]: number}
   };
 
-  const last = await (await fetch('https://play.pkmn.cc/data/index.json')).json();
+  const last = await (await fetch('https://play.pkmn.cc/assets.json')).json();
   const run = (cwd: string, cmd: string, args: string[]) =>
     child_process.execFileSync(cmd, args, {cwd, encoding: 'utf8'});
 

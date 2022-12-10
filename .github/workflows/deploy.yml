@@ -46,7 +46,7 @@ jobs:
       - name: Copy pkmn/randbats data
         run: cp -a randbats/data/stats PocketMon/dist/data/random
       - name: Compute build data/index.json
-        run: node PocketMon/build smogon randbats > PocketMon/dist/data/index.json
+        run: node PocketMon/build smogon randbats > PocketMon/dist/assets.json
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
