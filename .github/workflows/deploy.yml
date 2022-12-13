@@ -31,7 +31,7 @@ jobs:
         with:
           repository: pkmn/randbats
           path: randbats
-      - name: Setup Nodex
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
