@@ -63,7 +63,8 @@ which has separate Pokédex sprites for its teambuilder.
 - preferences
   - color scheme
   - which data to sync
-  - what UI mode to use (hardcore mode, PS mode, inline calcs and EPOke mode)
+  - what UI mode to use (hardcore mode, PS mode, inline calcs and EPOke mode, AI mode)
+  - teambuilder/damage calc sort settings (usage vs. alphabetical)
 - application state (return where left off)
 
 ### [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)

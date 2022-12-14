@@ -4,6 +4,7 @@
   - [`workbox`](https://developer.chrome.com/docs/workbox/)
 - UI framework
   - restore page on reload
+  - [Fluid typography](https://css-tricks.com/simplified-fluid-typography)
 - Assets Management
   - preload
   - settings UI
