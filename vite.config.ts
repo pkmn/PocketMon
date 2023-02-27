@@ -4,7 +4,7 @@ import path from 'path';
 import {PluginContext} from 'rollup';
 import sharp from 'sharp';
 import {fileURLToPath} from 'url';
-import {createLogger, defineConfig, HtmlTagDescriptor, Plugin, ResolvedConfig} from 'vite';
+import {defineConfig, HtmlTagDescriptor, Plugin, ResolvedConfig} from 'vite';
 import TSConfigPathsPlugin from 'vite-tsconfig-paths';
 import react from '@vitejs/plugin-react';
 
@@ -238,16 +238,7 @@ const chunk = (file: string, base: string) => {
   return `${base}.${!m ? 'current.gen' : +m[1] <= 5 ? 'classic.gens' : 'modern.gens'}`;
 };
 
-const logger = createLogger();
-// eslint-disable-next-line @typescript-eslint/unbound-method
-const loggerWarn = logger.warn;
-logger.warn = (msg, options) => {
-  if (msg.includes('This plugin imports React for you automatically')) return;
-  loggerWarn(msg, options);
-};
-
 export default defineConfig({
-  customLogger: logger,
   plugins: [
     react({jsxRuntime: 'classic'}),
     TSConfigPathsPlugin(),
@@ -269,6 +260,8 @@ export default defineConfig({
         if (warning.code !== 'EVAL') warn(warning);
       },
       output: {
+        entryFileNames: '[name].[hash].js',
+        assetFileNames: '[name].[hash][extname]',
         manualChunks: id => {
           let index = id.indexOf(NODE_MODULES);
           if (index > 1) {
@@ -278,7 +271,7 @@ export default defineConfig({
             const namespace = id.slice(1, index);
             return chunk(id, `${namespace}.${id.slice(index + 1, id.indexOf('/', index + 1))}`);
           }
-          if (!(id.startsWith(root) || id.startsWith('vite') || id.startsWith('\x00'))) {
+          if (!(id.startsWith(root) || id[0] === '\0')) {
             if (!id.startsWith(parent)) throw new Error(`Unexpected module ${id}`);
             id = id.slice(parent.length + 1);
             index = id.indexOf('/');
@@ -292,7 +285,9 @@ export default defineConfig({
     },
   },
   esbuild: {
-    jsxInject: 'import React from \'dom\'',
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
+    jsxInject: 'import {h, Fragment} from \'dom\'',
   },
   optimizeDeps: {
     esbuildOptions: {

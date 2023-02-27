@@ -94,6 +94,3 @@ export const h = (
 
 export const Fragment =
   (typeof DocumentFragment === 'function' ? DocumentFragment : () => {}) as Fragment;
-
-const React = {createElement: h, Fragment};
-export default React;
