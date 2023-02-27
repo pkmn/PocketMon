@@ -4,8 +4,9 @@ import path from 'path';
 import {PluginContext} from 'rollup';
 import sharp from 'sharp';
 import {fileURLToPath} from 'url';
-import {defineConfig, HtmlTagDescriptor, Plugin, ResolvedConfig} from 'vite';
+import {createLogger, defineConfig, HtmlTagDescriptor, Plugin, ResolvedConfig} from 'vite';
 import TSConfigPathsPlugin from 'vite-tsconfig-paths';
+import react from '@vitejs/plugin-react';
 
 const NODE_MODULES = '/node_modules/';
 
@@ -237,8 +238,18 @@ const chunk = (file: string, base: string) => {
   return `${base}.${!m ? 'current.gen' : +m[1] <= 5 ? 'classic.gens' : 'modern.gens'}`;
 };
 
+const logger = createLogger();
+// eslint-disable-next-line @typescript-eslint/unbound-method
+const loggerWarn = logger.warn;
+logger.warn = (msg, options) => {
+  if (msg.includes('This plugin imports React for you automatically')) return;
+  loggerWarn(msg, options);
+};
+
 export default defineConfig({
+  customLogger: logger,
   plugins: [
+    react({jsxRuntime: 'classic'}),
     TSConfigPathsPlugin(),
     MetaPlugin({
       name: 'PocketMon',
@@ -267,7 +278,7 @@ export default defineConfig({
             const namespace = id.slice(1, index);
             return chunk(id, `${namespace}.${id.slice(index + 1, id.indexOf('/', index + 1))}`);
           }
-          if (!(id.startsWith(root) || id.startsWith('vite'))) {
+          if (!(id.startsWith(root) || id.startsWith('vite') || id.startsWith('\x00'))) {
             if (!id.startsWith(parent)) throw new Error(`Unexpected module ${id}`);
             id = id.slice(parent.length + 1);
             index = id.indexOf('/');

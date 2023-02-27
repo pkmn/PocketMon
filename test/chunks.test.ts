@@ -7,7 +7,7 @@ import {init, parse} from 'es-module-lexer';
 
 const dist = path.resolve(fileURLToPath(import.meta.url), '../../dist');
 
-const chunk = (file: string) => file.slice(0, file.lastIndexOf('.', file.length - 4));
+const chunk = (file: string) => file.slice(0, file.lastIndexOf('-', file.length - 4));
 
 const CHUNKS: {[chunk: string]: string[]} = {
   'index': [],
