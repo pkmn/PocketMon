@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
 
-import {describe, expect, test} from 'vitest';
 import {init, parse} from 'es-module-lexer';
+import {describe, expect, test} from 'vitest';
 
 const dist = path.resolve(fileURLToPath(import.meta.url), '../../dist');
 

@@ -1,8 +1,8 @@
 import 'source-map-support/register';
 
 import * as crypto from 'crypto';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
 
 import stringify from 'json-stringify-pretty-compact';
 

@@ -1,12 +1,13 @@
+import path from 'path';
+import {fileURLToPath} from 'url';
+
+import react from '@vitejs/plugin-react';
 import favicons from 'favicons';
 import {parseFragment} from 'parse5';
-import path from 'path';
 import {PluginContext} from 'rollup';
 import sharp from 'sharp';
-import {fileURLToPath} from 'url';
-import {defineConfig, HtmlTagDescriptor, Plugin, ResolvedConfig} from 'vite';
+import {HtmlTagDescriptor, Plugin, ResolvedConfig, defineConfig} from 'vite';
 import TSConfigPathsPlugin from 'vite-tsconfig-paths';
-import react from '@vitejs/plugin-react';
 
 const NODE_MODULES = '/node_modules/';
 
