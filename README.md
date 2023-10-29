@@ -8,12 +8,12 @@
 </p>
 <hr />
 
-**PocketMon** is a next generation Pokémon battling client UI and tools suite optimized for
-high-level competitive play on the modern web. PocketMon is **mobile first**, leverages
-[EPOké](https://github.com/pkmn/EPOke)'s **enhanced battle state** tracking and prediction engine,
-supports **fully offline play** against the [0 ERROR](https://github.com/pkmn/0-ERROR) battling AI,
-and includes a **built-in cooperative damage calculator, team builder, analyses, usage statistics
-UIs**.
+**PocketMon** [is](https://en.wikipedia.org/wiki/Vaporware) a next generation Pokémon battling
+client UI and tools suite optimized for high-level competitive play on the modern web. PocketMon is
+**mobile first**, leverages [EPOké](https://github.com/pkmn/EPOke)'s **enhanced battle state**
+tracking and prediction engine, supports **fully offline play** against the [0
+ERROR](https://github.com/pkmn/0-ERROR) battling AI, and includes a **built-in cooperative damage
+calculator, team builder, analyses, usage statistics UIs**.
 
 ## License
 
