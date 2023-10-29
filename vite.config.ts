@@ -188,11 +188,11 @@ const MetaPlugin = (options: MetaPluginOptions): Plugin => {
 
   const getContentType = (url: string) => {
     switch (path.extname(url)) {
-    case '.webmanifest': return 'application/json';
-    case '.xml': return 'application/xml';
-    case '.ico': return 'image/x-icon';
-    case '.png': return 'image/png';
-    default: throw new Error(`Unknown content type for URL: ${url}`);
+      case '.webmanifest': return 'application/json';
+      case '.xml': return 'application/xml';
+      case '.ico': return 'image/x-icon';
+      case '.png': return 'image/png';
+      default: throw new Error(`Unknown content type for URL: ${url}`);
     }
   };
 
