@@ -241,7 +241,14 @@ const chunk = (file: string, base: string) => {
 
 export default defineConfig({
   plugins: [
-    react({jsxRuntime: 'classic'}),
+    react({jsxRuntime: 'classic'}).map(p =>
+      // vite:react-refresh adds ['react', jsxImportDevRuntime, jsxImportRuntime] to optimizeDeps
+      // which causes resolution errors during dev server startup because we don't use React
+      (p && 'name' in p) && p.name === 'vite:react-refresh' ? {...p, config: c => {
+        const original = (p as any).config(c);
+        delete original.optimizeDeps;
+        return original;
+      }} : p),
     TSConfigPathsPlugin(),
     MetaPlugin({
       name: 'PocketMon',
