@@ -1,5 +1,5 @@
-import {Settings, Theme} from './settings';
-import {Store} from './store';
+import {Settings, Theme} from './settings.js';
+import {Store} from './store.js';
 
 // Hack to hide the browser's URL bar
 setTimeout(() => window.scrollTo(0, 1), 0);

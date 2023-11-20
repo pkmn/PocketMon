@@ -262,6 +262,7 @@ export default defineConfig({
       },
       output: {
         entryFileNames: '[name].[hash].js',
+        chunkFileNames: '[name].[hash].js',
         assetFileNames: '[name].[hash][extname]',
         manualChunks: id => {
           let index = id.indexOf(NODE_MODULES);
