@@ -253,7 +253,7 @@ export default defineConfig({
     MetaPlugin({
       name: 'PocketMon',
       description: 'Mobile UI for competitive Pokémon battling',
-      analytics: 'UA-180700059-1',
+      analytics: 'G-DJ2METW58E',
       url: 'https://play.pkmn.cc',
     }),
   ],
