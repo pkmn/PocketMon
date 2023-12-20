@@ -8,7 +8,6 @@ coverage/
 node_modules/
 dist/
 build/
-*package-lock.json
 *-debug.log*
 .eslintcache
 .tsbuildinfo

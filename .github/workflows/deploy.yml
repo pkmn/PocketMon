@@ -38,7 +38,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Install dependencies
-        run: npm -C PocketMon install
+        run: npm -C PocketMon ci
       - name: Test
         run: npm -C PocketMon test # runs build
       - name: Copy pkmn/smogon data

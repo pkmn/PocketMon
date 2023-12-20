@@ -27,6 +27,10 @@
     "vite-tsconfig-paths": "^4.2.2",
     "vitest": "^1.1.0"
   },
+  "optionalDependencies": {
+    "@img/sharp-linux-x64": "^0.33.1",
+    "@rollup/rollup-linux-x64-gnu": "^4.9.1"
+  },
   "scripts": {
     "lint": "eslint --cache . --ext ts,tsx",
     "fix": "eslint --fix . --ext ts,tsx",
