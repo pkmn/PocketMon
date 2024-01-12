@@ -10,7 +10,7 @@
 
 **PocketMon** (named in reference to the [original Pokemon
 manga](https://en.wikipedia.org/wiki/Pocket_Monsters_(manga)), with ‘Pocket’ emphasizing its
-superior mobile experience) [is](https://pkmn.cc/vaporware.png) a next generation Pokémon battling
+superior mobile experience) [is](https://pkmn.cc/vaporware.png) a next-generation Pokémon battling
 client UI and tools suite optimized for high-level competitive play on the modern web. PocketMon
 builds on top of [EPOké](https://github.com/pkmn/EPOke)'s enhanced battle state tracking and
 prediction engine to provide the best battle experience to competitive players on both desktop and
