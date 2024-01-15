@@ -1,5 +1,5 @@
 {
-  "include": ["src", "test", "tools", "vite.config.ts"],
+  "include": ["src", "test", "tools", "vite.config.mts"],
   "compilerOptions": {
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
