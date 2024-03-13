@@ -18,25 +18,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Pocketmon
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: PocketMon
       - name: Checkout pkmn/smogon
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: pkmn/smogon
           path: smogon
       - name: Checkout pkmn/randbats
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: pkmn/randbats
           path: randbats
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v4
       - name: Install dependencies
         run: npm -C PocketMon ci
       - name: Test
@@ -48,7 +44,7 @@ jobs:
       - name: Compute build data/index.json
         run: node PocketMon/build smogon randbats > PocketMon/dist/assets.json
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: PocketMon/dist
   deploy:
@@ -60,4 +56,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
